@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.3
+Version: 1.0.4
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -46,13 +46,10 @@ interface for basic firewall setup.
 %prep
 %setup -q
 
-%build
-make
-
 %install
 rm -rf %{buildroot}
 
-make INSTROOT=%{buildroot} install
+make install INSTROOT=%{buildroot}
 
 desktop-file-install --vendor system --delete-original \
 	--dir %{buildroot}%{_datadir}/applications \
@@ -121,6 +118,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Wed Aug 22 2007 Thomas Woerner <twoerner@redhat.com> 1.0.4-1
+- more translations
+- build environment changes
+- dropped build stage, because it is not needed at all
+
 * Tue Aug 21 2007 Thomas Woerner <twoerner@redhat.com> 1.0.3-1
 - added missing system-config-securitylevel compatibility files
 - string and documentation fixes
