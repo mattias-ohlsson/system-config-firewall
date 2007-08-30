@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.4
+Version: 1.0.5
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -118,6 +118,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Thu Aug 30 2007 Thomas Woerner <twoerner@redhat.com> 1.0.5-1
+- more translations
+- fixed IPsec description
+- fixed po file generation to use xgettext only
+
 * Wed Aug 22 2007 Thomas Woerner <twoerner@redhat.com> 1.0.4-1
 - more translations
 - build environment changes
