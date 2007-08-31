@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.0.5
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -9,6 +9,7 @@ Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
+Patch0: system-config-firewall-1.0.5-lokkit.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -45,6 +46,7 @@ interface for basic firewall setup.
 
 %prep
 %setup -q
+%patch0 -p1 -b .lokkit
 
 %install
 rm -rf %{buildroot}
@@ -118,6 +120,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Aug 31 2007 Thomas Woerner <twoerner@redhat.com> 1.0.5-2
+- fixed lokkit problem if selinux configuration is not available (rhbz#269601)
+
 * Thu Aug 30 2007 Thomas Woerner <twoerner@redhat.com> 1.0.5-1
 - more translations
 - fixed IPsec description
