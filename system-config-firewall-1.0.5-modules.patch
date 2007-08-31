@@ -1,0 +1,52 @@
+diff -u -r1.7 lokkit
+--- system-config-firewall-1.0.5/src/lokkit	31 Aug 2007 15:52:12 -0000	1.7
++++ system-config-firewall-1.0.5/src/lokkit	31 Aug 2007 17:22:37 -0000
+@@ -90,9 +90,18 @@
+     ip6tables_conf = ip6tablesConfig(IP6TABLES_CFG)
+     ip6tables_conf.read()
+ 
++    _modules = [ ]
++    try:
++        _modules.append(ip4tables_conf.get("IPTABLES_MODULES"))
++    except:
++        pass
++    try:
++        _modules.append(ip6tables_conf.get("IP6TABLES_MODULES"))
++    except:
++        pass
++
+     # setup modules
+-    for modules in [ ip4tables_conf.get("IPTABLES_MODULES"),
+-                     ip6tables_conf.get("IP6TABLES_MODULES") ]:
++    for modules in _modules:
+         if config.add_module:
+             for module in config.add_module:
+                 modalias = None
+diff -u -r1.7 fw_iptables.py
+--- system-config-firewall-1.0.5/src/fw_iptables.py	20 Aug 2007 15:57:57 -0000	1.7
++++ system-config-firewall-1.0.5/src/fw_iptables.py	31 Aug 2007 17:22:37 -0000
+@@ -74,7 +74,7 @@
+             key = p[0].strip()
+             value = p[1].strip()
+             # remove leading and trailing double quotes
+-            if value[0] == '"' and value[-1] == '"':
++            if len(value) > 0 and value[0] == '"' and value[-1] == '"':
+                 value = value[1:-1]
+             if key[-8:] == "_MODULES":
+                 value = value.split()
+@@ -107,11 +107,13 @@
+                 key = p[0].strip()
+                 value = p[1].strip()
+                 # remove leading and trailing double quotes
+-                if value[0] == '"' and value[-1] == '"':
++                if len(value) > 0 and value[0] == '"' and value[-1] == '"':
+                     value = value[1:-1]
+                 if key[-8:] == "_MODULES":
+                     value = value.split()
+-                if key in self.p_config.keys() and self.p_config[key] != value:
++                if (key in self.p_config.keys() and \
++                        self.p_config[key] != value) or \
++                        key not in self.p_config.keys():
+                     self._write(temp_file, key, self.p_config[key])
+                     modified = True
+                     del self.p_config[key]
