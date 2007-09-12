@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.5
-Release: 4%{?dist}
+Version: 1.0.6
+Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -9,9 +9,6 @@ Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
-Patch0: system-config-firewall-1.0.5-lokkit.patch
-Patch1: system-config-firewall-1.0.5-modules.patch
-Patch2: system-config-firewall-1.0.5-sysconfig.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -48,9 +45,6 @@ interface for basic firewall setup.
 
 %prep
 %setup -q
-%patch0 -p1 -b .lokkit
-%patch1 -p1 -b .modules
-%patch2 -p1 -b .sysconfig
 
 %install
 rm -rf %{buildroot}
@@ -119,11 +113,18 @@ fi
 %{_datadir}/system-config-firewall/fw_selinux.*
 %{_datadir}/system-config-firewall/fw_services.*
 %{_datadir}/system-config-firewall/fw_sysconfig.*
+%{_datadir}/system-config-firewall/fw_sysctl.*
 %{_datadir}/system-config-firewall/fw_tui.*
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Wed Sep 12 2007 Thomas Woerner <twoerner@redhat.com> 1.0.6-1
+- dropped --stop option from fw_gui::genArgs
+- new translations
+- sysctl support for masquerading (net.ipv4.ip_forward will be set)
+- glade file: fixed spacings, dropped not needed containers
+
 * Wed Sep  5 2007 Thomas Woerner <twoerner@redhat.com> 1.0.5-4
 - fixed problem if /etc/sysconfig/system-config-securtylevel and 
   /etc/sysconfig/system-config-firewall are not readable
