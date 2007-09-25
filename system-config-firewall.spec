@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.6
+Version: 1.0.7
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -119,6 +119,23 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Tue Sep 25 2007 Thomas Woerner <twoerner@redhat.com> 1.0.7-1
+- new translations
+- added openvpn to services (rhbz#)
+- fixed typo in description text for ipsec
+- using port numbers instead of port names for services
+- renamed some variables to be consistent
+- make tolltip better: bigger text, helper modules
+- dropped unused code: inconsistent handling
+- make port check button inactive in add_port_cb
+- new function _addDevice: code cleanup
+- allow to set variables in ipXtablesConfig, which were not set before
+- fixed os.system calls in ipXtablesClass to return proper return values
+- fixed status funciton in ipXtablesClass
+- new _append_unique function in fw_parser to prevent duplicates
+- added warning dialog for missing or unusable /etc/sysconfig/ip*tables files
+- fixed expand of the warning label in the startup dialog
+
 * Wed Sep 12 2007 Thomas Woerner <twoerner@redhat.com> 1.0.6-1
 - dropped --stop option from fw_gui::genArgs
 - new translations
