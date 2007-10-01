@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.7
+Version: 1.0.8
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -119,6 +119,12 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Mon Oct  1 2007 Thomas Woerner <twoerner@redhat.com> 1.0.8-1
+- use extension match for protocols (rhbz#229879)
+- use ipv6-icmp instead of icmpv6 (rhbz#291001)
+- use ':' in tui as port/proto delimiter for other ports (rhbz#292171)
+- some translation fixes
+
 * Tue Sep 25 2007 Thomas Woerner <twoerner@redhat.com> 1.0.7-1
 - new translations
 - added openvpn to services (rhbz#)
