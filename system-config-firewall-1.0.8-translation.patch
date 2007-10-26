@@ -1,0 +1,929 @@
+Index: de.po
+===================================================================
+RCS file: /usr/local/CVS/system-config-firewall/po/de.po,v
+retrieving revision 1.19
+retrieving revision 1.21
+diff -u -r1.19 -r1.21
+--- system-config-firewall-1.0.8/po/de.po	1 Oct 2007 13:37:26 -0000	1.19
++++ system-config-firewall-1.0.8/po/de.po	26 Oct 2007 14:46:39 -0000	1.21
+@@ -1,4 +1,3 @@
+-# translation of de.po to Deutsch
+ # translation of de.po to
+ # Copyright (C) 2006 ORGANIZATION.
+ #
+@@ -16,9 +15,9 @@
+ "Project-Id-Version: de\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2007-09-25 17:23+0200\n"
+-"PO-Revision-Date: 2007-09-27 10:56+0200\n"
+-"Last-Translator: Michael Schönitzer <michael@schoenitzer.de>\n"
+-"Language-Team: Deutsch\n"
++"PO-Revision-Date: 2007-10-05 13:36+1000\n"
++"Last-Translator: PGP-KeyID: 0x037FD3CF <ttrinks@redhat.com>\n"
++"Language-Team:  <de@li.org>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+@@ -127,10 +126,9 @@
+ msgstr "Die folgenden Dateien fehlen oder sind nicht benützbar:"
+ 
+ #: ../src/fw_gui.py:867
+-#, fuzzy
+ msgid "Apply your firewall configuration now to correct this problem."
+ msgstr ""
+-"Wenden Sie ihre Firewall-Konfiguration nun an, um das Problem zu lössen."
++"Wenden Sie ihre Firewall-Konfiguration nun an, um das Problem zu lösen."
+ 
+ #: ../src/fw_gui.py:886
+ #, python-format
+Index: it.po
+===================================================================
+RCS file: /usr/local/CVS/system-config-firewall/po/it.po,v
+retrieving revision 1.19
+retrieving revision 1.21
+diff -u -r1.19 -r1.21
+--- system-config-firewall-1.0.8/po/it.po	25 Sep 2007 15:16:29 -0000	1.19
++++ system-config-firewall-1.0.8/po/it.po	26 Oct 2007 14:46:39 -0000	1.21
+@@ -1,24 +1,23 @@
+-# translation of it.po to 
+ # translation of it.po to
+ # Copyright (C) 2005 ORGANIZATION.
++#
++#
+ # Luca Ferrari <alexluca@inwind.it>, 2004.
+ # Paolo Dona' <vik@3jv.com>, 2004.
+ # Francesco Valente <fvalen@redhat.com>, 2004.
+ # Francesco Tombolini <tombo@adamantio.net>, 2005, 2006, 2007.
+-#
+-#
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: it\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2007-09-25 17:23+0200\n"
+-"PO-Revision-Date: 2007-08-30 07:00+0200\n"
+-"Last-Translator: \n"
+-"Language-Team:  <it@li.org>\n"
++"PO-Revision-Date: 2007-10-03 06:18+0200\n"
++"Last-Translator: Francesco Tombolini <tombo@adamantio.net>\n"
++"Language-Team:  <fedora-trans-it@redhat.com>\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=ISO-8859-1\n"
+ "Content-Transfer-Encoding: 8bit\n"
+-"X-Generator: KBabel 1.9.1\n"
++"X-Generator: KBabel 1.11.4\n"
+ "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+ 
+ #: ../src/fw_gui.py:56
+@@ -89,24 +88,20 @@
+ msgstr "Il firewall � disabilitato."
+ 
+ #: ../src/fw_gui.py:481
+-#, fuzzy
+ msgid "enabled"
+-msgstr "Abilitato"
++msgstr "abilitato"
+ 
+ #: ../src/fw_gui.py:483
+-#, fuzzy
+ msgid "disabled"
+-msgstr "Disabilitato"
++msgstr "disabilitato"
+ 
+ #: ../src/fw_gui.py:484
+-#, fuzzy
+ msgid "Default:"
+-msgstr "Predefinito: abilitato"
++msgstr "Predefinito:"
+ 
+ #: ../src/fw_gui.py:486
+-#, fuzzy
+ msgid "Helper modules:"
+-msgstr "Moduli Helper"
++msgstr "Moduli Helper:"
+ 
+ #: ../src/fw_gui.py:698
+ msgid "There are unapplied changes, do you really want to quit?"
+@@ -117,17 +112,17 @@
+ msgstr "Non configurato"
+ 
+ #: ../src/fw_gui.py:858
+-#, fuzzy
+ msgid "The firewall configuration is not consistent."
+-msgstr "Configurazione Firewall - Personalizza"
++msgstr "La configurazione del firewall � inconsistente."
+ 
+ #: ../src/fw_gui.py:860
+ msgid "The following files are missing or unusable:"
+-msgstr ""
++msgstr "I seguenti files sono mancanti o inutilizzabili:"
+ 
+ #: ../src/fw_gui.py:867
+ msgid "Apply your firewall configuration now to correct this problem."
+ msgstr ""
++"Applicare la configurazione del firewall ora per correggere il problema."
+ 
+ #: ../src/fw_gui.py:886
+ #, python-format
+@@ -329,7 +324,6 @@
+ msgstr "IPsec"
+ 
+ #: ../src/fw_services.py:49
+-#, fuzzy
+ msgid ""
+ "Internet Protocol Security (IPsec) incorporates security for network "
+ "transmissions into the Internet Protocol (IP) directly. IPsec provides "
+@@ -339,8 +333,8 @@
+ msgstr ""
+ "Internet Protocol Security (IPsec) incorpora la sicurezza per le "
+ "trasmissioni di rete direttamente nell'Internet Protocol (IP). IPsec "
+-"fornisce i metodi sia per la cifratura dei dati che per l'autenticazione "
+-"dell'host o rete ai quali esso li invia. Se si pianifica l'uso di un server "
++"fornisce metodi sia per la cifratura dei dati che per l'autenticazione "
++"dell'host o rete ai quali sono inviati. Se si pianifica l'uso di un server "
+ "vpnc o FreeS/WAN, non disabilitare questa opzione."
+ 
+ #: ../src/fw_services.py:57
+@@ -518,7 +512,7 @@
+ 
+ #: ../src/fw_services.py:126
+ msgid "OpenVPN"
+-msgstr ""
++msgstr "OpenVPN"
+ 
+ #: ../src/fw_services.py:127
+ msgid ""
+@@ -526,6 +520,9 @@
+ "encrypted point-to-point tunnles between computers. If you plan to provide a "
+ "VPN service, enable this option."
+ msgstr ""
++"OpenVPN � una soluzione virtual private network (VPN). E' usata per creare "
++"tunnels cifrati point-to-point tra computers. Se si pianifica di fornire un "
++"servizio VPN, abilitare questa opzione."
+ 
+ #: ../src/fw_tui.py:51 ../src/system-config-firewall.glade:9
+ msgid "Firewall Configuration"
+@@ -1102,6 +1099,3 @@
+ msgid "Please remember to check your firewall configuration before using it."
+ msgstr ""
+ "Si ricordi di controllare la configurazione del firewall prima di usarlo."
+-
+-#~ msgid "Default: disabled"
+-#~ msgstr "Predefinito: disabilitato"
+Index: nb.po
+===================================================================
+RCS file: /usr/local/CVS/system-config-firewall/po/nb.po,v
+retrieving revision 1.14
+retrieving revision 1.17
+diff -u -r1.14 -r1.17
+--- system-config-firewall-1.0.8/po/nb.po	25 Sep 2007 15:16:29 -0000	1.14
++++ system-config-firewall-1.0.8/po/nb.po	26 Oct 2007 14:46:39 -0000	1.17
+@@ -1,13 +1,13 @@
+ # Norwegian translation for system-config-network
+ # Copyright (C) 2001 Red Hat, Inc.
+ # Trond Eivind Glomsrød <teg@redhat.com>, 2001.
+-# Kjartan Maraas <kmaraas@gnome.org>, 2001-2005.
++# Kjartan Maraas <kmaraas@gnome.org>, 2001-2007.
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: system-config-network 1.0\n"
++"Project-Id-Version: system-config-firewall 1.0\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2007-09-25 17:23+0200\n"
+-"PO-Revision-Date: 2007-01-09 11:57+0100\n"
++"PO-Revision-Date: 2007-10-04 15:39+0200\n"
+ "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+ "Language-Team: Norwegian <i18n-nb@lister.ping.uio.no>\n"
+ "MIME-Version: 1.0\n"
+@@ -16,12 +16,11 @@
+ 
+ #: ../src/fw_gui.py:56
+ msgid "Firewall"
+-msgstr "Brannvegg"
++msgstr "Brannmur"
+ 
+ #: ../src/fw_gui.py:57
+-#, fuzzy
+ msgid "Configure firewall rules"
+-msgstr "Konfigurer brannveggregler og SELinux-innstillinger"
++msgstr "Konfigurer brannmurregler"
+ 
+ #: ../src/fw_gui.py:58
+ msgid ""
+@@ -32,22 +31,19 @@
+ 
+ #: ../src/fw_gui.py:214 ../src/fw_gui.py:248 ../src/fw_gui.py:293
+ msgid "Service"
+-msgstr ""
++msgstr "Tjeneste"
+ 
+ #: ../src/fw_gui.py:221
+-#, fuzzy
+ msgid "Port/Protocol"
+-msgstr "Protokoll:"
++msgstr "Port/protokoll"
+ 
+ #: ../src/fw_gui.py:236 ../src/fw_gui.py:281
+-#, fuzzy
+ msgid "Port"
+-msgstr "Legg til port"
++msgstr "Port"
+ 
+ #: ../src/fw_gui.py:243 ../src/fw_gui.py:288
+-#, fuzzy
+ msgid "Protocol"
+-msgstr "Protokoll:"
++msgstr "Protokoll"
+ 
+ #: ../src/fw_gui.py:329 ../src/fw_gui.py:362
+ msgid "Interface"
+@@ -55,49 +51,43 @@
+ 
+ #: ../src/fw_gui.py:338 ../src/fw_gui.py:371
+ msgid "Description"
+-msgstr ""
++msgstr "Beskrivelse"
+ 
+ #: ../src/fw_gui.py:388
+ msgid "Type"
+-msgstr ""
++msgstr "Type"
+ 
+ #: ../src/fw_gui.py:396
+-#, fuzzy
+ msgid "Table"
+-msgstr "Aktivert"
++msgstr "Tabell"
+ 
+ #: ../src/fw_gui.py:402
+ msgid "Filename"
+-msgstr ""
++msgstr "Filnavn"
+ 
+ #: ../src/fw_gui.py:440
+ msgid "(modified)"
+-msgstr ""
++msgstr "(modifisert)"
+ 
+ #: ../src/fw_gui.py:450
+-#, fuzzy
+ msgid "The firewall is enabled."
+-msgstr "_Alternativer for brannvegg"
++msgstr "Brannmuren er aktivert."
+ 
+ #: ../src/fw_gui.py:462
+-#, fuzzy
+ msgid "The firewall is disabled."
+-msgstr "Konfigurer brannveggen, men ikke aktiver den"
++msgstr "Brannmuren er deaktivert."
+ 
+ #: ../src/fw_gui.py:481
+-#, fuzzy
+ msgid "enabled"
+-msgstr "Aktivert"
++msgstr "aktivert"
+ 
+ #: ../src/fw_gui.py:483
+-#, fuzzy
+ msgid "disabled"
+-msgstr "Deaktivert"
++msgstr "deaktivert"
+ 
+ #: ../src/fw_gui.py:484
+-#, fuzzy
+ msgid "Default:"
+-msgstr "Deaktivert"
++msgstr "Forvalgt:"
+ 
+ #: ../src/fw_gui.py:486
+ msgid "Helper modules:"
+@@ -109,16 +99,15 @@
+ 
+ #: ../src/fw_gui.py:815 ../src/fw_gui.py:829
+ msgid "Not configured"
+-msgstr ""
++msgstr "Ikke konfigurert"
+ 
+ #: ../src/fw_gui.py:858
+-#, fuzzy
+ msgid "The firewall configuration is not consistent."
+-msgstr "Brannveggkonfigurasjon - Tilpass"
++msgstr "Brannmurkonfigurasjonen er ikke konsistent."
+ 
+ #: ../src/fw_gui.py:860
+ msgid "The following files are missing or unusable:"
+-msgstr ""
++msgstr "Følgende filer mangler eller kan ikke brukes:"
+ 
+ #: ../src/fw_gui.py:867
+ msgid "Apply your firewall configuration now to correct this problem."
+@@ -127,7 +116,7 @@
+ #: ../src/fw_gui.py:886
+ #, python-format
+ msgid "Port or port range '%s' is not valid."
+-msgstr ""
++msgstr "Port eller portområde «%s» er ikke gyldig."
+ 
+ #: ../src/fw_gui.py:888
+ #, fuzzy
+@@ -143,13 +132,12 @@
+ "Are you sure that you want to do this?"
+ msgstr ""
+ "Ved å klikke på «Ja»-knappen vil du sette sikkerhetsnivået for systemet og "
+-"overstyre eventuell eksisterende brannveggkonfigurasjon. Er du sikker på at "
++"overstyre eventuell eksisterende brannmurkonfigurasjon. Er du sikker på at "
+ "du vil gjøre dette?"
+ 
+ #: ../src/fw_gui.py:952 ../src/system-config-firewall.glade:917
+-#, fuzzy
+ msgid "Trusted Interfaces"
+-msgstr "Enheter vi stoler på:"
++msgstr "Enheter systemet stoler på"
+ 
+ #: ../src/fw_gui.py:954 ../src/system-config-firewall.glade:1085
+ #, fuzzy
+@@ -157,31 +145,29 @@
+ msgstr "Maskerade"
+ 
+ #: ../src/fw_gui.py:958 ../src/system-config-firewall.glade:1511
+-#, fuzzy
+ msgid "Custom Rules"
+-msgstr "Tilpass"
++msgstr "Egendefinerte regler"
+ 
+ #: ../src/fw_gui.py:1127
+-#, fuzzy
+ msgid "Configuration failed"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Konfigurasjonen feilet"
+ 
+ #: ../src/fw_gui.py:1184
+ #, python-format
+ msgid "All %s devices"
+-msgstr ""
++msgstr "Alle %s enheter"
+ 
+ #: ../src/fw_parser.py:93
+ msgid "Enable firewall (default)"
+-msgstr "Aktiver brannvegg (forvalgt)"
++msgstr "Aktiver brannmur (forvalgt)"
+ 
+ #: ../src/fw_parser.py:96
+ msgid "Disable firewall"
+-msgstr "Deaktiver brannveggen"
++msgstr "Deaktiver brannmuren"
+ 
+ #: ../src/fw_parser.py:99 ../src/fw_parser.py:103
+ msgid "<module>"
+-msgstr ""
++msgstr "<modul>"
+ 
+ #: ../src/fw_parser.py:100
+ msgid "Enable an iptables module"
+@@ -193,12 +179,11 @@
+ 
+ #: ../src/fw_parser.py:107
+ msgid "<port>[-<port>]:<protocol>"
+-msgstr ""
++msgstr "<port>[-<port>]:<protokoll>"
+ 
+ #: ../src/fw_parser.py:109
+-#, fuzzy
+ msgid "Open specific ports in the firewall (e.g, ssh:tcp)"
+-msgstr "Tillat spesifikke porter gjennom brannveggen"
++msgstr "Åpne spesifikke porter i brannmuren (f.eks. ssh:tcp)"
+ 
+ #: ../src/fw_parser.py:113
+ msgid "Disable Internet Protocol Security (IPsec)"
+@@ -214,7 +199,7 @@
+ 
+ #: ../src/fw_parser.py:122 ../src/fw_parser.py:126
+ msgid "<interface>"
+-msgstr ""
++msgstr "<grensesnitt>"
+ 
+ #: ../src/fw_parser.py:123
+ msgid "Allow all traffic on the specified device"
+@@ -241,7 +226,7 @@
+ 
+ #: ../src/fw_parser.py:145
+ msgid "<mode>"
+-msgstr ""
++msgstr "<modus>"
+ 
+ #: ../src/fw_parser.py:146
+ #, fuzzy
+@@ -250,7 +235,7 @@
+ 
+ #: ../src/fw_parser.py:150
+ msgid "<type>"
+-msgstr ""
++msgstr "<type>"
+ 
+ #: ../src/fw_parser.py:151
+ msgid "Configure SELinux type: Usually targeted or strict Policy"
+@@ -263,7 +248,7 @@
+ 
+ #: ../src/fw_parser.py:179
+ msgid "Show this help message"
+-msgstr ""
++msgstr "Vis denne hjelpteksten"
+ 
+ #: ../src/fw_parser.py:182
+ msgid "Run noninteractively; process only command-line arguments"
+@@ -274,9 +259,8 @@
+ msgstr ""
+ 
+ #: ../src/fw_parser.py:189
+-#, fuzzy
+ msgid "Configure firewall but do not activate the new configuration"
+-msgstr "Konfigurer brannveggen, men ikke aktiver den"
++msgstr "Konfigurer brannmuren, men ikke aktiver den nye konfigurasjonen"
+ 
+ #: ../src/fw_parser.py:193
+ msgid "Ignore actual settings"
+@@ -313,7 +297,7 @@
+ 
+ #: ../src/fw_services.py:48
+ msgid "IPsec"
+-msgstr ""
++msgstr "IPsec"
+ 
+ #: ../src/fw_services.py:49
+ msgid ""
+@@ -409,7 +393,7 @@
+ 
+ #: ../src/fw_services.py:106
+ msgid "DNS"
+-msgstr ""
++msgstr "DNS"
+ 
+ #: ../src/fw_services.py:107
+ msgid ""
+@@ -420,7 +404,7 @@
+ 
+ #: ../src/fw_services.py:110
+ msgid "IMAP over SSL"
+-msgstr ""
++msgstr "IMAP over SSL"
+ 
+ #: ../src/fw_services.py:111
+ msgid ""
+@@ -431,7 +415,7 @@
+ 
+ #: ../src/fw_services.py:115
+ msgid "POP-3 over SSL"
+-msgstr ""
++msgstr "POP-3 over SSL"
+ 
+ #: ../src/fw_services.py:116
+ msgid ""
+@@ -442,7 +426,7 @@
+ 
+ #: ../src/fw_services.py:120
+ msgid "RADIUS"
+-msgstr ""
++msgstr "RADIUS"
+ 
+ #: ../src/fw_services.py:121
+ msgid ""
+@@ -454,7 +438,7 @@
+ 
+ #: ../src/fw_services.py:126
+ msgid "OpenVPN"
+-msgstr ""
++msgstr "OpenVPN"
+ 
+ #: ../src/fw_services.py:127
+ msgid ""
+@@ -465,7 +449,7 @@
+ 
+ #: ../src/fw_tui.py:51 ../src/system-config-firewall.glade:9
+ msgid "Firewall Configuration"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Konfigurasjon av brannmur"
+ 
+ #: ../src/fw_tui.py:54
+ msgid ""
+@@ -473,13 +457,13 @@
+ "firewall blocks all incoming connections. Disabling a firewall allows all "
+ "connections and is not recommended. "
+ msgstr ""
+-"En brannvegg beskytter mot innbrudd i nettverket. Hvis du aktiverer "
+-"brannveggen vil alle innkommende tilkoblinger blokkeres. Hvis den "
+-"deaktiveres tillates alle tilkoblinger og dette anbefales ikke. "
++"En brannmur beskytter mot innbrudd i nettverket. Hvis du aktiverer "
++"brannmuren vil alle innkommende tilkoblinger blokkeres. Hvis den deaktiveres "
++"tillates alle tilkoblinger og dette anbefales ikke. "
+ 
+ #: ../src/fw_tui.py:60
+ msgid "Firewall:"
+-msgstr "Brannvegg:"
++msgstr "Brannmur:"
+ 
+ #: ../src/fw_tui.py:61
+ msgid "Enabled"
+@@ -503,7 +487,7 @@
+ 
+ #: ../src/fw_tui.py:75
+ msgid "Firewall Configuration - Customize"
+-msgstr "Brannveggkonfigurasjon - Tilpass"
++msgstr "Brannmurkonfigurasjon - Tilpass"
+ 
+ #: ../src/fw_tui.py:78
+ msgid ""
+@@ -512,9 +496,9 @@
+ "protocols explicitly through the firewall. Specify additional ports in the "
+ "form 'service:protocol', such as 'imap:tcp'. "
+ msgstr ""
+-"Du kan tilpasse din brannvegg på to måter. For det første kan du velge å "
++"Du kan tilpasse din brannmur på to måter. For det første kan du velge å "
+ "tillate all trafikk fra utvalgte nettverksgrensesnitt. Videre kan du tillate "
+-"spesifikke protokoller eksplisitt gjennom brannveggen. Spesifiser flere "
++"spesifikke protokoller eksplisitt gjennom brannmuren. Spesifiser flere "
+ "porter på formen 'tjeneste:protokoll', slik som 'imap:tcp'."
+ 
+ #: ../src/fw_tui.py:87
+@@ -533,23 +517,20 @@
+ msgstr "Maskerade"
+ 
+ #: ../src/fw_tui.py:161
+-#, fuzzy
+ msgid "Other Ports:"
+-msgstr "Andre porter"
++msgstr "Andre porter:"
+ 
+ #: ../src/fw_tui.py:169
+-#, fuzzy
+ msgid "Custom Rules:"
+-msgstr "Tilpass"
++msgstr "Egendefinerte regler:"
+ 
+ #: ../src/lokkit:38
+-#, fuzzy
+ msgid ""
+ "\n"
+ "ERROR - You must be root to run lokkit."
+ msgstr ""
+ "\n"
+-"FEIL - Du må være root for å kjøre lokkit.\n"
++"FEIL - Du må være root for å kjøre lokkit."
+ 
+ #: ../src/lokkit:143 ../src/lokkit:148
+ #, python-format
+@@ -573,7 +554,7 @@
+ 
+ #: ../src/system-config-firewall.glade:39
+ msgid "_File"
+-msgstr ""
++msgstr "_Fil"
+ 
+ #: ../src/system-config-firewall.glade:48
+ msgid "Apply"
+@@ -586,7 +567,7 @@
+ 
+ #: ../src/system-config-firewall.glade:96
+ msgid "_Quit"
+-msgstr ""
++msgstr "_Avslutt"
+ 
+ #: ../src/system-config-firewall.glade:121
+ msgid "_Options"
+@@ -598,28 +579,25 @@
+ 
+ #: ../src/system-config-firewall.glade:155
+ #: ../src/system-config-firewall.glade:345
+-#, fuzzy
+ msgid "Enable"
+-msgstr "Aktivert"
++msgstr "Aktiver"
+ 
+ #: ../src/system-config-firewall.glade:175
+ #: ../src/system-config-firewall.glade:361
+-#, fuzzy
+ msgid "Disable"
+-msgstr "Deaktivert"
++msgstr "Deaktiver"
+ 
+ #: ../src/system-config-firewall.glade:201
+-#, fuzzy
+ msgid "Load _Default Configuration"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Last _forvalgt konfigurasjon"
+ 
+ #: ../src/system-config-firewall.glade:219
+ msgid "_Help"
+-msgstr ""
++msgstr "_Hjelp"
+ 
+ #: ../src/system-config-firewall.glade:228
+ msgid "_About"
+-msgstr ""
++msgstr "_Om"
+ 
+ #: ../src/system-config-firewall.glade:273
+ msgid "Wizard"
+@@ -638,9 +616,8 @@
+ msgstr ""
+ 
+ #: ../src/system-config-firewall.glade:585
+-#, fuzzy
+ msgid "Trusted Services"
+-msgstr "Enheter vi stoler på:"
++msgstr "Enheter systemet stoler på"
+ 
+ #: ../src/system-config-firewall.glade:615
+ msgid ""
+@@ -655,7 +632,6 @@
+ msgstr ""
+ 
+ #: ../src/system-config-firewall.glade:774
+-#, fuzzy
+ msgid "Other Ports"
+ msgstr "Andre porter"
+ 
+@@ -755,13 +731,12 @@
+ msgstr ""
+ 
+ #: ../src/system-config-firewall.glade:1796
+-#, fuzzy
+ msgid "Service Settings"
+-msgstr "Innstilling for SELinux:"
++msgstr "Innstillinger for tjeneste"
+ 
+ #: ../src/system-config-firewall.glade:1895
+ msgid "modified label"
+-msgstr ""
++msgstr "endret etikett"
+ 
+ #: ../src/system-config-firewall.glade:1930
+ msgid "Add Port"
+@@ -775,11 +750,11 @@
+ 
+ #: ../src/system-config-firewall.glade:2056
+ msgid "User Defined"
+-msgstr ""
++msgstr "Brukerdefinert"
+ 
+ #: ../src/system-config-firewall.glade:2096
+ msgid "Port / Port Range:"
+-msgstr ""
++msgstr "Port / portområde:"
+ 
+ #: ../src/system-config-firewall.glade:2124
+ msgid "Protocol:"
+@@ -787,11 +762,11 @@
+ 
+ #: ../src/system-config-firewall.glade:2208
+ msgid "system-config-firewall"
+-msgstr ""
++msgstr "system-config-firewall"
+ 
+ #: ../src/system-config-firewall.glade:2209
+ msgid "(C) 2007 Red Hat, Inc."
+-msgstr ""
++msgstr "(C) 2007 Red Hat, Inc."
+ 
+ #: ../src/system-config-firewall.glade:2211
+ msgid ""
+@@ -813,11 +788,12 @@
+ #: ../src/system-config-firewall.glade:2221
+ msgid "translator-credits"
+ msgstr ""
++"Kjartan Maraas <kmaraas@gnome.org>\n"
++"Espen Stefansen <libbe at stefansen dot net>"
+ 
+ #: ../src/system-config-firewall.glade:2227
+-#, fuzzy
+ msgid "Add Custom Rules File"
+-msgstr "Tilpass"
++msgstr "Legg til egendefinert regelfil"
+ 
+ #: ../src/system-config-firewall.glade:2298
+ msgid ""
+@@ -827,25 +803,23 @@
+ 
+ #: ../src/system-config-firewall.glade:2349
+ msgid "Address Type:"
+-msgstr ""
++msgstr "Type adresse:"
+ 
+ #: ../src/system-config-firewall.glade:2395
+-#, fuzzy
+ msgid "Firewall Table:"
+-msgstr "Brannvegg"
++msgstr "Brannmurtabell:"
+ 
+ #: ../src/system-config-firewall.glade:2436
+ msgid "File:"
+-msgstr ""
++msgstr "Fil:"
+ 
+ #: ../src/system-config-firewall.glade:2461
+ msgid "Select A File"
+-msgstr ""
++msgstr "Velg en fil"
+ 
+ #: ../src/system-config-firewall.glade:2493
+-#, fuzzy
+ msgid "Firewall Configuration Wizard"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Assistent for konfigurasjon av brannmur"
+ 
+ #: ../src/system-config-firewall.glade:2608
+ msgid ""
+@@ -862,17 +836,19 @@
+ 
+ #: ../src/system-config-firewall.glade:2661
+ msgid "<b>Preface</b>"
+-msgstr ""
++msgstr "<b>Forberedelse</b>"
+ 
+ #: ../src/system-config-firewall.glade:2727
+ msgid "What kind of system do you have?"
+-msgstr ""
++msgstr "Hva slags system har du?"
+ 
+ #: ../src/system-config-firewall.glade:2770
+ msgid ""
+ "System without network access\n"
+ "System with network access"
+ msgstr ""
++"System uten nettverkstilgang\n"
++"System med nettverkstilgang"
+ 
+ #: ../src/system-config-firewall.glade:2794
+ msgid ""
+@@ -880,10 +856,13 @@
+ "all. Selecting this will disable the firewall. Else choose <i>\"System with "
+ "network access\"</i>."
+ msgstr ""
++"<i>«System uten nettverkstilgang»</i> trenger ikke en brannmur. Ved å velge "
++"dette, deaktiveres brannmuren. Hvis ikke, velges <i>«System med "
++"nettverkstilgang»</i>."
+ 
+ #: ../src/system-config-firewall.glade:2821
+ msgid "<b>Basic Firewall Settings</b>"
+-msgstr ""
++msgstr "<b>Grunnleggende innstillinger for brannmur"
+ 
+ #: ../src/system-config-firewall.glade:2887
+ msgid "To how many networks do you connect at a time?"
+@@ -918,6 +897,8 @@
+ "Beginner\n"
+ "Expert"
+ msgstr ""
++"Begynner\n"
++"Ekspert"
+ 
+ #: ../src/system-config-firewall.glade:3115
+ msgid ""
+@@ -925,6 +906,8 @@
+ "and if you need to add user customized rules. Else choose <i>\"Beginner\"</"
+ "i>."
+ msgstr ""
++"Velg <i>«Ekspert»</i> hvis du er kjent med å konfigurere en brannmur og hvis "
++"du trenger brukerdefinerte regler. Hvis ikke velges <i>«Begynner»</i>."
+ 
+ #: ../src/system-config-firewall.glade:3142
+ msgid "<b>User Skill Level</b>"
+@@ -935,9 +918,8 @@
+ msgstr ""
+ 
+ #: ../src/system-config-firewall.glade:3252
+-#, fuzzy
+ msgid "Cleanup Configuration"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Rydd i konfigurasjon"
+ 
+ #: ../src/system-config-firewall.glade:3279
+ msgid ""
+@@ -946,14 +928,12 @@
+ msgstr ""
+ 
+ #: ../src/system-config-firewall.glade:3306
+-#, fuzzy
+ msgid "<b>Configuration</b>"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "<b>Konfigurasjon</b>"
+ 
+ #: ../src/system-config-firewall.glade:3366
+-#, fuzzy
+ msgid "Firewall Configuration Startup"
+-msgstr "Konfigurasjon av brannvegg"
++msgstr "Start konfigurasjon av brannmur"
+ 
+ #: ../src/system-config-firewall.glade:3423
+ msgid "This program will help you setting up a basic firewall for your system."
+@@ -972,111 +952,3 @@
+ #: ../src/system-config-firewall.glade:3507
+ msgid "Please remember to check your firewall configuration before using it."
+ msgstr ""
+-
+-#, fuzzy
+-#~ msgid "Disable IPSec"
+-#~ msgstr "Deaktivert"
+-
+-#, fuzzy
+-#~ msgid "Trusted Devices"
+-#~ msgstr "Enheter vi stoler på:"
+-
+-#, fuzzy
+-#~ msgid "Deactivated"
+-#~ msgstr "_Alternativer for brannvegg"
+-
+-#, fuzzy
+-#~ msgid "Start the service"
+-#~ msgstr "Enheter vi stoler på:"
+-
+-#~ msgid "SELinux"
+-#~ msgstr "SELinux"
+-
+-#, fuzzy
+-#~ msgid "Port:"
+-#~ msgstr "Port(er):"
+-
+-#, fuzzy
+-#~ msgid "Trust"
+-#~ msgstr "Tiltrodd"
+-
+-#, fuzzy
+-#~ msgid "Firewall deactivated"
+-#~ msgstr "_Alternativer for brannvegg"
+-
+-#~ msgid ""
+-#~ "   Choose the appropriate security level for your\n"
+-#~ "   system.\n"
+-#~ "\n"
+-#~ msgstr ""
+-#~ "   Velg passende sikkerhetsnivå for ditt\n"
+-#~ "   system.\n"
+-#~ "\n"
+-
+-#~ msgid "Ok"
+-#~ msgstr "Ok"
+-
+-#~ msgid "Firewall Customization"
+-#~ msgstr "Tilpassing av brannvegg"
+-
+-#~ msgid "Security Level:"
+-#~ msgstr "Sikkerhetsnivå:"
+-
+-#~ msgid "SELinux:"
+-#~ msgstr "SELinux:"
+-
+-#~ msgid "MASQUERADE Devices:"
+-#~ msgstr "MASQUERADE-enheter:"
+-
+-#~ msgid "Allow incoming:"
+-#~ msgstr "Tillat innkommende:"
+-
+-#~ msgid "Telnet"
+-#~ msgstr "Telnet"
+-
+-#~ msgid "Other ports"
+-#~ msgstr "Andre porter"
+-
+-#~ msgid ""
+-#~ " <Tab>/<Alt-Tab> between elements   |   <Space> selects  |   <F12> next "
+-#~ "screen"
+-#~ msgstr ""
+-#~ " <Tab>/<Alt-Tab> mellom elementer   | <Mellomrom> velger  |  <F12> neste "
+-#~ "skjerm"
+-
+-#~ msgid "module to add"
+-#~ msgstr "modul som skal legges til"
+-
+-#~ msgid "module to remove"
+-#~ msgstr "modul som skal fjernes"
+-
+-#~ msgid "port:protocol (e.g, ssh:tcp)"
+-#~ msgstr "port:protokoll (f.eks ssh:tcp)"
+-
+-#~ msgid "device to trust"
+-#~ msgstr "enhet vi stoler på"
+-
+-#~ msgid "device to masquerade"
+-#~ msgstr "enhet som skal maskeres"
+-
+-#~ msgid "Configure SELinux"
+-#~ msgstr "Konfigurer SELinux"
+-
+-#~ msgid "Configure SELinux Policy"
+-#~ msgstr "Konfigurer SELinux-regel"
+-
+-#~ msgid "Usually 'targeted' or 'strict'"
+-#~ msgstr "Vanligvis «targeted» eller «strict»"
+-
+-#~ msgid "Backwards compatiblity, ignored"
+-#~ msgstr "Bakoverkompatibilitet, ignorert"
+-
+-#, fuzzy
+-#~ msgid "Please configure the firewall for your system."
+-#~ msgstr "Velg passende sikkerhetsnivå for systemet."
+-
+-#~ msgid "Name"
+-#~ msgstr "Navn"
+-
+-#~ msgid "_SELinux"
+-#~ msgstr "_SELinux"

@@ -1,0 +1,80 @@
+Index: lokkit
+===================================================================
+RCS file: /usr/local/CVS/system-config-firewall/src/lokkit,v
+retrieving revision 1.10
+retrieving revision 1.11
+diff -u -r1.10 -r1.11
+--- system-config-firewall-1.0.8/src/lokkit	1 Oct 2007 13:37:27 -0000	1.10
++++ system-config-firewall-1.0.8/src/lokkit	26 Oct 2007 14:46:39 -0000	1.11
+@@ -129,44 +129,47 @@
+     # write IPv6 configuration
+     ip6tables_conf.write()
+ 
++ip4tables = iptablesClass(IP4TABLES_RULES)
++ip6tables = ip6tablesClass(IP6TABLES_RULES)
+ ip4t_status = ip6t_status = 0
+-if not config.nostart:
+-    ip4tables = iptablesClass(IP4TABLES_RULES)
+-    ip6tables = ip6tablesClass(IP6TABLES_RULES)
+ 
+-    # start/stop ip*tables
+-    if config.enabled:
+-        # write and start new ipv4 config
+-        ip4tables.write(config)
++if config.enabled:
++    # write new ipv4 config
++    ip4tables.write(config)    
++    # write new ipv6 config
++    ip6tables.write(config)
++
++    if not config.nostart:
++        # start ip*tables
+         ip4t_status = ip4tables.restart()
+         if config.verbose and ip4t_status != 0:
+             print _("Failed to start %s.") % "iptables"
+-        # write and start new ipv6 config
+-        ip6tables.write(config)
+         ip6t_status = ip6tables.restart()
+         if config.verbose and ip6t_status != 0:
+             print _("Failed to start %s.") % "ip6tables"
+-    else:
+-        # stop and remove ipv4 config
++else: # not enabled
++    if not config.nostart:
++        # stop ip*tables
+         ip4t_status = ip4tables.stop()
+         if ip4t_status != 0:
+             print _("Failed to stop %s.") % "iptables"
+-        try:
+-            ip4tables.unlink()
+-        except Exception, msg:
+-            ip4t_status += 1
+-            if config.verbose:
+-                print msg
+-        # stop and remove ipv6 config
+         ip6t_status = ip6tables.stop()
+         if ip6t_status != 0:
+             print _("Failed to stop %s.") % "ip6tables"
+-        try:
+-            ip6tables.unlink()
+-        except Exception, msg:
+-            ip6t_status += 1
+-            if config.verbose:
+-                print msg
++    # remove ipv4 config
++    try:
++        ip4tables.unlink()
++    except Exception, msg:
++        ip4t_status += 1
++        if config.verbose:
++            print msg
++    # remove ipv6 config
++    try:
++        ip6tables.unlink()
++    except Exception, msg:
++        ip6t_status += 1
++        if config.verbose:
++            print msg
+ 
+ # write /etc/sysconfig/system-config-securitylevel and
+ # /etc/sysconfig/system-config-firewall
