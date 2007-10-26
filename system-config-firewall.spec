@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.0.8
-Release: 2%{?dist}
+Release: 3%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -123,6 +123,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Oct 26 2007 Thomas Woerner <twoerner@redhat.com> 1.0.8.3
+- bump release for CVS
+
 * Fri Oct 26 2007 Thomas Woerner <twoerner@redhat.com> 1.0.8-2
 - lokkit: write new config with nostart option (rhbz#353961)
 - translation fixes for de, it, nb, sr@latin
