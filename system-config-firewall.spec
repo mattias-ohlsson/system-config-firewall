@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.8
-Release: 3%{?dist}
+Version: 1.0.9
+Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -9,8 +9,6 @@ Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
-Patch0: system-config-firewall-1.0.8-nostart.patch
-Patch1: system-config-firewall-1.0.8-translation.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -47,8 +45,6 @@ interface for basic firewall setup.
 
 %prep
 %setup -q
-%patch0 -p1 -b .nostart
-%patch1 -p1 -b .translation
 
 %install
 rm -rf %{buildroot}
@@ -123,8 +119,10 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
-* Fri Oct 26 2007 Thomas Woerner <twoerner@redhat.com> 1.0.8.3
-- bump release for CVS
+* Mon Nov  5 2007 Thomas Woerner <twoerner@redhat.com> 1.0.9-1
+- do not report configuration failed if ipv6 is disabled (rhbz#355561)
+- print messages if lokkit failed
+- lokkit be more verbose on restarting ipXtables in verbose mode
 
 * Fri Oct 26 2007 Thomas Woerner <twoerner@redhat.com> 1.0.8-2
 - lokkit: write new config with nostart option (rhbz#353961)
