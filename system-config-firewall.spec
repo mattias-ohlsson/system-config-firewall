@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.9
+Version: 1.0.10
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -119,6 +119,10 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Nov  9 2007 Thomas Woerner <twoerner@redhat.com> 1.0.10-1
+- fixed problem with network devices (rhbz#331671)
+- dropped obsolete translation no.po (rhbz#332331)
+
 * Mon Nov  5 2007 Thomas Woerner <twoerner@redhat.com> 1.0.9-1
 - do not report configuration failed if ipv6 is disabled (rhbz#355561)
 - print messages if lokkit failed
