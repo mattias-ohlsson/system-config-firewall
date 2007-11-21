@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.10
+Version: 1.0.11
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -119,6 +119,17 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Wed Nov 21 2007 Thomas Woerner <twoerner@redhat.com> 1.0.11-1
+- fixed crash on startup for network device aliases (rhbz#384891)
+  thanks to Loran Freval for the patch
+- added port entry max length in other ports dialog (rhbz#385931)
+- added version number to about dialog (rhbz#387891)
+- improved some english texts (rhbz#383741)
+  thanks to Paul W. Frields for the initial patch
+- code cleanup with start speedup
+- do not allow to add custm rules for ipv6:nat
+- also translate parser error messages
+
 * Fri Nov  9 2007 Thomas Woerner <twoerner@redhat.com> 1.0.10-1
 - fixed problem with network devices (rhbz#331671)
 - dropped obsolete translation no.po (rhbz#332331)
