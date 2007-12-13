@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.11
-Release: 1%{?dist}
+Version: 1.0.12
+Release: 2%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -119,6 +119,20 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Thu Dec 13 2007 Thomas Woerner <twoerner@redhat.com> 1.0.12-2
+- fixed lokkit command problem for non english languages
+- using latest translations
+
+* Mon Dec 10 2007 Thomas Woerner <twoerner@redhat.com> 1.0.12-1
+- allow to activate checkboxes by row activation in treeviews
+- code cleanup in view_toggle_cb
+- fixed port display for IPSec
+- use system icons where possible, new wizard icons
+- added fallback for CellRendererCheck if icons are missing, size fixes
+- added tooltips for toolbar and menu entries (if needed)
+- improved more english texts (rhbz#395801)
+  thanks to Paul W. Frields for the initial patch
+
 * Wed Nov 21 2007 Thomas Woerner <twoerner@redhat.com> 1.0.11-1
 - fixed crash on startup for network device aliases (rhbz#384891)
   thanks to Loran Freval for the patch
