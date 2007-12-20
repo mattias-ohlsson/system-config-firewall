@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.0.12
-Release: 2%{?dist}
+Version: 1.1.0
+Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -73,6 +73,12 @@ if [ -x /usr/bin/gtk-update-icon-cache ]; then
   gtk-update-icon-cache -q %{_datadir}/icons/hicolor
 fi
 
+%triggerpostun -- %{name} < 1.1.0
+%{_datadir}/system-config-firewall/convert-config
+
+%triggerpostun -- system-config-securitylevel
+%{_datadir}/system-config-firewall/convert-config
+
 %files -f %{name}.lang
 %defattr(-,root,root)
 %{_bindir}/system-config-firewall
@@ -103,6 +109,7 @@ fi
 %doc COPYING
 %{_sbindir}/lokkit
 %{_bindir}/system-config-firewall-tui
+%{_datadir}/system-config-firewall/convert-config
 %dir %{_datadir}/system-config-firewall
 %defattr(0644,root,root)
 %{_datadir}/system-config-firewall/etc_services.*
@@ -119,6 +126,25 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Thu Dec 20 2007 Thomas Woerner <twoerner@redhat.com> 1.1.0-1
+- new default configurations: server, desktop
+- cleanup of wizard: dropped network connection tab
+- new option in wizard to keep configuration or load a default configuration
+- new menu entry and dialog to configure iptables and ip6tables service settings
+- some enhancements to the gtk_cellrenderercheck for better look and feel
+
+* Fri Dec 14 2007 Thomas Woerner <twoerner@redhat.com> 1.1.0-0
+- ports are ports and services are services: there is a new service tag to
+  enable services; a port is not enabling a service anymore
+- new conversion tool for 1.0.X to 1.1.X configuration
+- new version option for lokkit
+- wizard
+  - dropped network connection selection tab
+  - using keep configuration check instead of clear configuration check
+  - added default configuration selection
+- gui: new menu for skill level and load default configuration
+- use choices in optparse, removed obsolete check functions
+
 * Thu Dec 13 2007 Thomas Woerner <twoerner@redhat.com> 1.0.12-2
 - fixed lokkit command problem for non english languages
 - using latest translations
