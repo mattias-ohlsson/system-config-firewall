@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.1.0
+Version: 1.1.1
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -126,6 +126,13 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Dec 21 2007 Thomas Woerner <twoerner@redhat.com> 1.1.1-1
+- use radio buttons for skill menu entries to show active level
+- fixed convert-config problem if there is no configuration to convert
+  (rhbz#426477)
+- minor string changes
+- new it and pt_BR translations
+
 * Thu Dec 20 2007 Thomas Woerner <twoerner@redhat.com> 1.1.0-1
 - new default configurations: server, desktop
 - cleanup of wizard: dropped network connection tab
