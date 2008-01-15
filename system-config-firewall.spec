@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.1.1
+Version: 1.1.3
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -126,6 +126,29 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Tue Jan 15 2008 Thomas Woerner <twoerner@redhat.com> 1.1.3-1
+- new fw_compat, used in config-convert and fw_sysconfig to automatically 
+  convert old system-config-securitylevel configurations
+- new wizard look
+- fixed range check for user defined ports
+- some code cleanup
+- updated translations for fi, fr and ja
+
+* Mon Jan  7 2008 Thomas Woerner <twoerner@redhat.com> 1.1.2-1
+- fw_gui: fixed row activation for masquerading
+- fw_gui: fixed _setInterfaces to use internal functions to correctly set
+  toggles
+- fw_gui: show info dialog if no config exists and firewall gets enabled: new
+  function enableFirewall
+- fw_gui, fw_tui: disable firewall if no config exists
+- fw_gui, fw_tui: do not print traceback if NCDeviceList.getDeviceList raises
+  and exception
+- forward masqueraded connections
+- gtk_cellrenderercheck: fixed size calculations
+- fw_sysconfig: set config.filename to None for merged configuration in
+  read_sysconfig_config if no configuration exists
+- new translations
+
 * Fri Dec 21 2007 Thomas Woerner <twoerner@redhat.com> 1.1.1-1
 - use radio buttons for skill menu entries to show active level
 - fixed convert-config problem if there is no configuration to convert
