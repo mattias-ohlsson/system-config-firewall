@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.1.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -113,6 +113,7 @@ fi
 %dir %{_datadir}/system-config-firewall
 %defattr(0644,root,root)
 %{_datadir}/system-config-firewall/etc_services.*
+%{_datadir}/system-config-firewall/fw_compat.*
 %{_datadir}/system-config-firewall/fw_config.*
 %{_datadir}/system-config-firewall/fw_functions.*
 %{_datadir}/system-config-firewall/fw_iptables.*
@@ -126,6 +127,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Wed Jan 16 2008 Thomas Woerner <twoerner@redhat.com> 1.1.3-2
+- added fw_compat files to files section
+
 * Tue Jan 15 2008 Thomas Woerner <twoerner@redhat.com> 1.1.3-1
 - new fw_compat, used in config-convert and fw_sysconfig to automatically 
   convert old system-config-securitylevel configurations
