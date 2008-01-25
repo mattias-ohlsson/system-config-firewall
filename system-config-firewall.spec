@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.1.3
-Release: 2%{?dist}
+Version: 1.2.0
+Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -127,6 +127,15 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Jan 25 2008 Thomas Woerner <twoerner@redhat.com> 1.2.0-1
+- added port forwarding
+- using INPUT chain in table filter instead of RH-Firewall-1-INPUT
+- fixed masquerading
+- rewrite of firewall generation code
+- trusted hosts now also allowed for FORWARD
+- lots of bug fixes
+- gui enhancements
+
 * Wed Jan 16 2008 Thomas Woerner <twoerner@redhat.com> 1.1.3-2
 - added fw_compat files to files section
 
