@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.1
+Version: 1.2.2
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -127,6 +127,13 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Feb  1 2008 Thomas Woerner <twoerner@redhat.com> 1.2.2-1
+- fixed icmp handling for ip6tables in FORWARD chain
+- do state established, related test early in FORWARD chain
+- fixed typo in address for port-forwarding
+- added IPv4 only message to masquerading and port-forwarding for lokkit
+- updated translations: es, pl
+
 * Thu Jan 31 2008 Thomas Woerner <twoerner@redhat.com> 1.2.1-1
 - fixed traceback for clean selinux configuration (rhbz#430963)
 - fixed icmp handling for ip6tables
