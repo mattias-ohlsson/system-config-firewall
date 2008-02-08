@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.2
+Version: 1.2.3
 Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
@@ -16,7 +16,7 @@ Obsoletes: system-config-securitylevel
 Provides: system-config-securitylevel = 1.7.0
 Requires: pygtk2
 Requires: python
-Requires: usermode >= 1.36
+Requires: usermode >= 1.94.1
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
@@ -127,6 +127,16 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Fri Feb  8 2008 Thomas Woerner <twoerner@redhat.com> 1.2.3-1
+- fixed traceback for empty configuration use in life installer (rhbz#430963)
+- use config-util for userhelper configuration (rhbz#428392)
+- mark dirty after applying new default configuration
+- do not overwrite attributes filename and converted in config
+- use new shared ChooserButton
+- fixed forward dialog and labels to use current dialog width
+- use tempfile.mkdtemp for better security
+- updated translations: fi, fr, it, ja, nl, pt_BR, sr and sr@latin
+
 * Fri Feb  1 2008 Thomas Woerner <twoerner@redhat.com> 1.2.2-1
 - fixed icmp handling for ip6tables in FORWARD chain
 - do state established, related test early in FORWARD chain
