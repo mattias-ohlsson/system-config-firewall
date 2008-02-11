@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.3
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -16,7 +16,7 @@ Obsoletes: system-config-securitylevel
 Provides: system-config-securitylevel = 1.7.0
 Requires: pygtk2
 Requires: python
-Requires: usermode >= 1.94.1
+Requires: usermode >= 1.94
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
@@ -127,6 +127,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Mon Feb 11 2008 Thomas Woerner <twoerner@redhat.com> 1.2.3-2
+- fixed usermode version (rhbz#428392)
+
 * Fri Feb  8 2008 Thomas Woerner <twoerner@redhat.com> 1.2.3-1
 - fixed traceback for empty configuration use in life installer (rhbz#430963)
 - use config-util for userhelper configuration (rhbz#428392)
