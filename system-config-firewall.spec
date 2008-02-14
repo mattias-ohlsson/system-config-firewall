@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.3
-Release: 2%{?dist}
+Version: 1.2.4
+Release: 1%{?dist}
 URL: http://fedora.redhat.com/projects/config-tools/
 License: GPLv2+
 ExclusiveOS: Linux
@@ -127,6 +127,10 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Thu Feb 14 2008 Thomas Woerner <twoerner@redhat.com> 1.2.4-1
+- fixed overwrite problem if IPTABLES_SAVE_ON_RESTART is set (rhbz#431961)
+- use SELECTION_NONE for trustedView 
+
 * Mon Feb 11 2008 Thomas Woerner <twoerner@redhat.com> 1.2.3-2
 - fixed usermode version (rhbz#428392)
 
