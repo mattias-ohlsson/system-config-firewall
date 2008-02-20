@@ -1,8 +1,8 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.4
+Version: 1.2.5
 Release: 1%{?dist}
-URL: http://fedora.redhat.com/projects/config-tools/
+URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
 Group: System Environment/Base
@@ -82,11 +82,8 @@ fi
 %files -f %{name}.lang
 %defattr(-,root,root)
 %{_bindir}/system-config-firewall
-%{_bindir}/system-config-securitylevel
 %{_datadir}/system-config-firewall/system-config-firewall.py*
-%dir %{_datadir}/system-config-securitylevel
-%dir %{_datadir}/system-config-securitylevel/pixmaps
-%dir %{_datadir}/firstboot/modules
+#%dir %{_datadir}/firstboot/modules
 %defattr(0644,root,root)
 %{_datadir}/system-config-firewall/fw_gui.*
 %{_datadir}/system-config-firewall/gtk_*
@@ -94,15 +91,9 @@ fi
 %{_datadir}/system-config-firewall/*.png
 %{_datadir}/applications/system-config-firewall.desktop
 %{_datadir}/icons/hicolor/48x48/apps/system-config-firewall.png
-%{_datadir}/icons/hicolor/48x48/apps/system-config-securitylevel.png
 %config /etc/security/console.apps/system-config-firewall
-%config /etc/security/console.apps/system-config-securitylevel
 %config /etc/pam.d/system-config-firewall
-%config /etc/pam.d/system-config-securitylevel
-%{_datadir}/system-config-securitylevel/*.*
-%{_datadir}/system-config-securitylevel/pixmaps/*.*
-%{_datadir}/firstboot/modules/firstboot_selinux.py*
-%{_datadir}/firstboot/modules/securitylevel.py*
+#%{_datadir}/firstboot/modules/*.py*
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -124,9 +115,12 @@ fi
 %{_datadir}/system-config-firewall/fw_sysctl.*
 %{_datadir}/system-config-firewall/fw_tui.*
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
-%ghost %config(missingok,noreplace) /etc/sysconfig/system-config-securitylevel
 
 %changelog
+* Wed Feb 20 2008 Thomas Woerner <twoerner@redhat.com> 1.2.5-1
+- dropped system-config-securitylevel compatibility files
+- project moved to git.fedoraproject.org
+
 * Thu Feb 14 2008 Thomas Woerner <twoerner@redhat.com> 1.2.4-1
 - fixed overwrite problem if IPTABLES_SAVE_ON_RESTART is set (rhbz#431961)
 - use SELECTION_NONE for trustedView 
