@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.5
+Version: 1.2.6
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -107,6 +107,7 @@ fi
 %{_datadir}/system-config-firewall/fw_compat.*
 %{_datadir}/system-config-firewall/fw_config.*
 %{_datadir}/system-config-firewall/fw_functions.*
+%{_datadir}/system-config-firewall/fw_icmp.*
 %{_datadir}/system-config-firewall/fw_iptables.*
 %{_datadir}/system-config-firewall/fw_parser.*
 %{_datadir}/system-config-firewall/fw_selinux.*
@@ -117,6 +118,16 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Tue Mar  4 2008 Thomas Woerner <twoerner@redhat.com> 1.2.6-1
+- new ICMP filter to block specified ICMP types
+- fixed minor problem in lokkit (initialize old_config)
+- set starting diretory for custom rules files to /etc/sysconfig
+- more build environment changes for git
+- use gtk.CellRendererToggle instead of own CellRendererCheck
+- several parser changes for transparent error handling and output
+- some minor enhancements
+- translation updates
+
 * Wed Feb 20 2008 Thomas Woerner <twoerner@redhat.com> 1.2.5-1
 - dropped system-config-securitylevel compatibility files
 - project moved to git.fedoraproject.org
