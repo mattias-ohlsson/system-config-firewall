@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.6
+Version: 1.2.7
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -118,6 +118,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Thu Apr  3 2008 Thomas Woerner <twoerner@redhat.com> 1.2.7-1
+- fixed crash if encoding is not UTF-8 (rhbz#439902)
+- updated translations: bn_IN, cs, de, es, fi, fr, gu, hi, it, kn, ko, ml,
+                        mr, pa, pl, pt_BR, ru, sr, sr@latin, ta, te, zh_CN
+
 * Tue Mar  4 2008 Thomas Woerner <twoerner@redhat.com> 1.2.6-1
 - new ICMP filter to block specified ICMP types
 - fixed minor problem in lokkit (initialize old_config)
