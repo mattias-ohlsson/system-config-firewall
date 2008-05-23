@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.7
+Version: 1.2.8
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -118,6 +118,14 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Fri May 23 2008 Thomas Woerner <twoerner@redhat.com> 1.2.8-1
+- new tui interface
+- new system-config-firewall-tui
+- new client services for ipp and samba
+- lokkit: fixed disabling of firewall in force mode (rhbz#443411)
+- disabled port forwarding for IPv6
+- some minor fixes and enhancements
+
 * Thu Apr  3 2008 Thomas Woerner <twoerner@redhat.com> 1.2.7-1
 - fixed crash if encoding is not UTF-8 (rhbz#439902)
 - updated translations: bn_IN, cs, de, es, fi, fr, gu, hi, it, kn, ko, ml,
