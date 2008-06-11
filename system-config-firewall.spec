@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.8
+Version: 1.2.9
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -118,6 +118,12 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Wed Jun 11 2008 Thomas Woerner <twoerner@redhat.com> 1.2.9-1
+- fixed format string to silence inttool
+- new remider to check if the ip*tables services are enabled
+- use proper dialog functions in the tui
+- updated translations: cs, de, es, gu, pl
+
 * Fri May 23 2008 Thomas Woerner <twoerner@redhat.com> 1.2.8-1
 - new tui interface
 - new system-config-firewall-tui
