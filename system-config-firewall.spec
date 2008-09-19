@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.10
+Version: 1.2.11
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -118,6 +118,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Fri Sep 19 2008 Thomas Woerner <twoerner@redhat.com> 1.2.11-1
+- use dialogs for parser errors in tui (rhbz#457485)
+- enable to add protocol specific (IPv4, IPv6) icmp types for ICMP filtering
+- updated translations for he, ja, ko and zh_CN
+
 * Tue Jul  8 2008 Thomas Woerner <twoerner@redhat.com> 1.2.10-1
 - lokkit: fixed path for system-config-firewall-tui (rhbz#454108)
 - updated translations for: it, fr, nl, ru, sr, sr@latin
