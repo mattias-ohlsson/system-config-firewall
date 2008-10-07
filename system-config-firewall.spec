@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.11
+Version: 1.2.12
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -79,11 +79,10 @@ fi
 %triggerpostun -- system-config-securitylevel
 %{_datadir}/system-config-firewall/convert-config
 
-%files -f %{name}.lang
+%files
 %defattr(-,root,root)
 %{_bindir}/system-config-firewall
 %{_datadir}/system-config-firewall/system-config-firewall.py*
-#%dir %{_datadir}/firstboot/modules
 %defattr(0644,root,root)
 %{_datadir}/system-config-firewall/fw_gui.*
 %{_datadir}/system-config-firewall/gtk_*
@@ -93,7 +92,6 @@ fi
 %{_datadir}/icons/hicolor/48x48/apps/system-config-firewall.png
 %config /etc/security/console.apps/system-config-firewall
 %config /etc/pam.d/system-config-firewall
-#%{_datadir}/firstboot/modules/*.py*
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -118,6 +116,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Tue Oct  7 2008 Thomas Woerner <twoerner@redhat.com> 1.2.12-1
+- only provide lang files in tui sub-package (rhbz#465572)
+- updated translations for: as, bn_IN, ca, cs, es, fr, gu, it, ja, kn, mr, nl,
+                            pa, or, pl, pt_BR, sk, zh_CN, zh_TW
+
 * Fri Sep 19 2008 Thomas Woerner <twoerner@redhat.com> 1.2.11-1
 - use dialogs for parser errors in tui (rhbz#457485)
 - enable to add protocol specific (IPv4, IPv6) icmp types for ICMP filtering
