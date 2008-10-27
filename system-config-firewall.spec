@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.12
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -17,6 +17,7 @@ Provides: system-config-securitylevel = 1.7.0
 Requires: pygtk2
 Requires: python
 Requires: usermode >= 1.94
+Requires: usermode-gtk
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
@@ -116,6 +117,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com> 1.2.12-2
+- add Requires: usermode-gtk
+
 * Tue Oct  7 2008 Thomas Woerner <twoerner@redhat.com> 1.2.12-1
 - only provide lang files in tui sub-package (rhbz#465572)
 - updated translations for: as, bn_IN, ca, cs, es, fr, gu, it, ja, kn, mr, nl,
