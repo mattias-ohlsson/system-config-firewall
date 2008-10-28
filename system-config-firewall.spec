@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.12
-Release: 2%{?dist}
+Version: 1.2.13
+Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -16,8 +16,7 @@ Obsoletes: system-config-securitylevel
 Provides: system-config-securitylevel = 1.7.0
 Requires: pygtk2
 Requires: python
-Requires: usermode >= 1.94
-Requires: usermode-gtk
+Requires: usermode-gtk >= 1.94
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
@@ -117,8 +116,18 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
-* Mon Oct 27 2008 Tom "spot" Callaway <tcallawa@redhat.com> 1.2.12-2
-- add Requires: usermode-gtk
+* Tue Oct 28 2008 Thomas Woerner <twoerner@redhat.com> 1.2.13-1
+- fixed two typos in fw_icmp (rhbz#467334)
+- added ability to sort custom rules files (rhbz#467696)
+- fixed modified test in sysctl writer: fixes rhbz#462325
+  also removed quotes around values for new keys
+- some build fixes
+- updated translations for: as, de, fi, fr, he, hi, ko, hu, it, ja, ko, ml,
+                            pl, pt_BR, ru, sk, sr, sr@latin, sv, ta, te, 
+                            zh_CN, zh_TW
+
+* Tue Oct 21 2008 Thomas Woerner <twoerner@redhat.com> 1.2.12-2
+- require usermode-gtk instead of usermode
 
 * Tue Oct  7 2008 Thomas Woerner <twoerner@redhat.com> 1.2.12-1
 - only provide lang files in tui sub-package (rhbz#465572)
