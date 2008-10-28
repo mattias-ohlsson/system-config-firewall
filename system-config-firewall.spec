@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.13
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -9,6 +9,7 @@ Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
+Patch0: system-config-firewall-1.2.13-tui_path.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -45,6 +46,7 @@ interface for basic firewall setup.
 
 %prep
 %setup -q
+%patch0 -p1 -b .tui_path
 
 %install
 rm -rf %{buildroot}
@@ -116,6 +118,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Tue Oct 28 2008 Thomas Woerner <twoerner@redhat.com> 1.2.13-2
+- fixed system-config-firewall-tui path (rhbz#457485)
+
 * Tue Oct 28 2008 Thomas Woerner <twoerner@redhat.com> 1.2.13-1
 - fixed two typos in fw_icmp (rhbz#467334)
 - added ability to sort custom rules files (rhbz#467696)

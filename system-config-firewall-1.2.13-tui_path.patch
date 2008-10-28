@@ -1,0 +1,13 @@
+diff --git a/src/system-config-firewall.py b/src/system-config-firewall.py
+index 3cbfa9f..a1994da 100755
+--- a/src/system-config-firewall.py
++++ b/src/system-config-firewall.py
+@@ -25,7 +25,7 @@ try:
+     import gtk
+ except:
+     import os
+-    argv = [ "/usr/sbin/system-config-firewall-tui" ]
++    argv = [ "/usr/bin/system-config-firewall-tui" ]
+     os.execv(argv[0], argv)
+ 
+ DATADIR = '/usr/share/system-config-firewall'
