@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.13
-Release: 2%{?dist}
+Release: 3%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -118,6 +118,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Mon Dec 01 2008 Ignacio Vazquez-Abrams <ivazqueznet+rpm@gmail.com> - 1.2.13-3
+- Rebuild for Python 2.6
+
 * Tue Oct 28 2008 Thomas Woerner <twoerner@redhat.com> 1.2.13-2
 - fixed system-config-firewall-tui path (rhbz#457485)
 
