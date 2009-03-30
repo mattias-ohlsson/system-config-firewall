@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.13
-Release: 4%{?dist}
+Version: 1.2.14
+Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -9,7 +9,6 @@ Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Source0: %{name}-%{version}.tar.bz2
-Patch0: system-config-firewall-1.2.13-tui_path.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -46,16 +45,17 @@ interface for basic firewall setup.
 
 %prep
 %setup -q
-%patch0 -p1 -b .tui_path
+
+%build
+%configure
 
 %install
 rm -rf %{buildroot}
 
-make install INSTROOT=%{buildroot}
+make install DESTDIR=%{buildroot}
 
 desktop-file-install --vendor system --delete-original \
 	--dir %{buildroot}%{_datadir}/applications \
-	--add-category X-Red-Hat-Base \
 	%{buildroot}%{_datadir}/applications/system-config-firewall.desktop
 
 %find_lang %{name} --all-name
@@ -89,9 +89,10 @@ fi
 %{_datadir}/system-config-firewall/fw_gui.*
 %{_datadir}/system-config-firewall/gtk_*
 %{_datadir}/system-config-firewall/*.glade
-%{_datadir}/system-config-firewall/*.png
+%{_datadir}/system-config-firewall/wizard_*.png
+%{_datadir}/system-config-firewall/wizard.svg
 %{_datadir}/applications/system-config-firewall.desktop
-%{_datadir}/icons/hicolor/48x48/apps/system-config-firewall.png
+%{_datadir}/icons/hicolor/*/apps/preferences-system-firewall.*
 %config /etc/security/console.apps/system-config-firewall
 %config /etc/pam.d/system-config-firewall
 
@@ -118,6 +119,13 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Fri Mar 27 2009 Thomas Woerner <twoerner@redhat.com> 1.2.14-1
+- new build environment using configure, autofoo and intltool
+- fixed typo in router-solicitation description (rhbz#490979)
+- new themable application icon: preferences-system-firewall (rhbz#454402)
+- make backup copies before overwriting files (rhbz#437374)
+- updated translations: 
+
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.13-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
