@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.14
+Version: 1.2.15
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -119,6 +119,11 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Mon Apr 13 2009 Thomas Woerner <twoerner@redhat.com> 1.2.15-1
+- fixed icon reference in desktop file (rhbz#493674)
+- fixed po/POTFILES.in
+- updated translations: as, bn_IN, el, fi, gu, hi, hu, it, kn, ko, mai, ml, mr, or, pa, pt, ru, sk, sv, ta, te, zh_TW
+
 * Fri Mar 27 2009 Thomas Woerner <twoerner@redhat.com> 1.2.14-1
 - new build environment using configure, autofoo and intltool
 - fixed typo in router-solicitation description (rhbz#490979)
