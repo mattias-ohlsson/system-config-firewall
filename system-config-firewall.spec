@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.16
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -119,6 +119,9 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Mon Apr 13 2009 Thomas Woerner <twoerner@redhat.com> 1.2.16-2
+- release bump
+
 * Mon Apr 13 2009 Thomas Woerner <twoerner@redhat.com> 1.2.16-1
 - fixed build system to update desktop file from desktop.in
   fixes icon reference in desktop file (rhbz#493674)
