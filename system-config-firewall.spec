@@ -1,7 +1,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.16
-Release: 3%{?dist}
+Version: 1.2.17
+Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -119,6 +119,19 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Mon Jul 27 2009 Thomas Woerner <twoerner@redhat.com> 1.2.17-1
+- Added Red Hat Cluster Suite to trusted services (rhbz#493668)
+- Fixed wrong patch for system-config-firewall-tui (rhbz#461046)
+- Fixed sysctl parser to also support ';' for comments
+- Fixed port range check for service names containing '-'
+- New column in serviceView for conntrack helper, removed from tooltip
+- New column in icmpView for protocol types, removed from tooltip
+- Added TFTP and TFTP client support (rhbz#494417)
+- Fixed sensitiveness of OK button in portDialog if editing an Port
+  (rhbz#500380)
+- Added missing tooltips for buttons in mainNotebook tabs. (rhbz#493872)
+- updated po files
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.16-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
