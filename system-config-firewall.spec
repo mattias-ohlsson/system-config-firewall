@@ -1,6 +1,6 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.17
+Version: 1.2.18
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -21,6 +21,7 @@ Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
 Requires: gtk2 >= 2.6
+Requires: python-slip >= 0.2.3
 
 %description
 system-config-firewall is a graphical user interface for basic firewall setup.
@@ -35,7 +36,6 @@ Provides: system-config-securitylevel-tui = 1.7.0
 Requires: iptables >= 1.2.8
 Requires: iptables-ipv6
 Requires: system-config-network-tui
-Requires: rhpl
 Requires: newt
 Requires: libselinux >= 1.19.1
 
@@ -84,17 +84,22 @@ fi
 %files
 %defattr(-,root,root)
 %{_bindir}/system-config-firewall
-%{_datadir}/system-config-firewall/system-config-firewall.py*
+#%{_datadir}/system-config-firewall/system-config-firewall.py*
 %defattr(0644,root,root)
+%{_sysconfdir}/dbus-1/system.d/org.fedoraproject.Config.Firewall.conf
+%{_datadir}/dbus-1/system-services/org.fedoraproject.Config.Firewall.service
+%{_datadir}/polkit-1/actions/org.fedoraproject.config.firewall.policy
 %{_datadir}/system-config-firewall/fw_gui.*
+%{_datadir}/system-config-firewall/fw_dbus.*
 %{_datadir}/system-config-firewall/gtk_*
 %{_datadir}/system-config-firewall/*.glade
+%attr(0755,root,root) %{_datadir}/system-config-firewall/system-config-firewall-mechanism.*
 %{_datadir}/system-config-firewall/wizard_*.png
 %{_datadir}/system-config-firewall/wizard.svg
 %{_datadir}/applications/system-config-firewall.desktop
 %{_datadir}/icons/hicolor/*/apps/preferences-system-firewall.*
-%config /etc/security/console.apps/system-config-firewall
-%config /etc/pam.d/system-config-firewall
+#%config /etc/security/console.apps/system-config-firewall
+#%config /etc/pam.d/system-config-firewall
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -110,6 +115,7 @@ fi
 %{_datadir}/system-config-firewall/fw_functions.*
 %{_datadir}/system-config-firewall/fw_icmp.*
 %{_datadir}/system-config-firewall/fw_iptables.*
+%{_datadir}/system-config-firewall/fw_lokkit.*
 %{_datadir}/system-config-firewall/fw_parser.*
 %{_datadir}/system-config-firewall/fw_selinux.*
 %{_datadir}/system-config-firewall/fw_services.*
@@ -119,6 +125,26 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Fri Sep 11 2009 Thomas Woerner <twoerner@redhat.com> 1.2.18-1
+- added support for PolicyKit
+- removed unused inconsistent flag from CellRendererToggle in serviceView (rhbz#521144)
+- made "Port/Protocol" cell resizable in "Trusted Services"-view
+- fixed hidden one line label after resize caused by fix for bgo#315462
+- fixed startup busy loops if assistive technologies is enabled (rhbz#515048)
+  by moving set_model after adding the columns to a TreeView
+- fixed tui to create valid empty self.config object (rhbz#518210)
+- failing to load the icon in fw_gui.setupScreen should not be fatal
+  (rhbz#508186)
+- made description column in settings dialog resizable
+- removed rhpl usage (rhbz#508991)
+- fixed not reappearing TreeViewTooltips if mouse moved in the tooltip popup
+- hide TreeViewTooltips while scrolling
+- code cleanup
+- sort ports in fw_services by protocol, id
+- updated translations: as, bn_IN, ca, da, de, es, fi, fr, gu, hi, kn, hu, it, 
+                        ja, ko, ml, mr, nl, or, pa, pl, pt, pt_BR, ru, sk, sr,
+			sr@latin, ta, te, uk, zh_CN, zh_TW
+
 * Mon Jul 27 2009 Thomas Woerner <twoerner@redhat.com> 1.2.17-1
 - Added Red Hat Cluster Suite to trusted services (rhbz#493668)
 - Fixed wrong patch for system-config-firewall-tui (rhbz#461046)
