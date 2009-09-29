@@ -1,6 +1,21 @@
+%if 0%{?fedora} >= 12 || 0%{?rhel} >= 6
+  %bcond_with usermode
+  %bcond_with polkit0
+  %bcond_without polkit1
+%else
+  %if 0%{?fedora} >= 10
+    %bcond_with usermode
+    %bcond_without polkit0
+  %else
+    %bcond_without usermode
+    %bcond_with polkit0
+  %endif
+  %bcond_with polkit1
+%endif
+
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.18
+Version: 1.2.19
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -16,12 +31,19 @@ Obsoletes: system-config-securitylevel
 Provides: system-config-securitylevel = 1.7.0
 Requires: pygtk2
 Requires: python
-Requires: usermode-gtk >= 1.94
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
 Requires: pygtk2-libglade
 Requires: gtk2 >= 2.6
-Requires: python-slip >= 0.2.3
+%if %{with usermode}
+Requires: usermode-gtk >= 1.94
+%endif
+%if %{with polkit0}
+Requires: python-slip-dbus >= 0.1.15
+%endif
+%if %{with polkit1}
+Requires: python-slip-dbus >= 0.2.7
+%endif
 
 %description
 system-config-firewall is a graphical user interface for basic firewall setup.
@@ -47,7 +69,11 @@ interface for basic firewall setup.
 %setup -q
 
 %build
-%configure
+echo %{with usermode} %{with polkit0} %{with polkit1}
+
+%configure %{?with_usermode: --enable-usermode} \
+	   %{?with_polkit0: --enable-policykit0} \
+	   %{!?with_polkit1: --disable-policykit1}
 
 %install
 rm -rf %{buildroot}
@@ -84,11 +110,18 @@ fi
 %files
 %defattr(-,root,root)
 %{_bindir}/system-config-firewall
-#%{_datadir}/system-config-firewall/system-config-firewall.py*
+%if %{with usermode}
+%{_datadir}/system-config-firewall/system-config-firewall
+%endif
 %defattr(0644,root,root)
 %{_sysconfdir}/dbus-1/system.d/org.fedoraproject.Config.Firewall.conf
 %{_datadir}/dbus-1/system-services/org.fedoraproject.Config.Firewall.service
+%if %{with polkit0}
+%{_datadir}/PolicyKit/policy/org.fedoraproject.config.firewall.0.policy
+%endif
+%if %{with polkit1}
 %{_datadir}/polkit-1/actions/org.fedoraproject.config.firewall.policy
+%endif
 %{_datadir}/system-config-firewall/fw_gui.*
 %{_datadir}/system-config-firewall/fw_dbus.*
 %{_datadir}/system-config-firewall/gtk_*
@@ -98,8 +131,10 @@ fi
 %{_datadir}/system-config-firewall/wizard.svg
 %{_datadir}/applications/system-config-firewall.desktop
 %{_datadir}/icons/hicolor/*/apps/preferences-system-firewall.*
-#%config /etc/security/console.apps/system-config-firewall
-#%config /etc/pam.d/system-config-firewall
+%if %{with usermode}
+%config /etc/security/console.apps/system-config-firewall
+%config /etc/pam.d/system-config-firewall
+%endif
 
 %files -f %{name}.lang tui
 %defattr(-,root,root)
@@ -125,6 +160,28 @@ fi
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
 %changelog
+* Tue Sep 29 2009 Thomas Woerner <twoerner@redhat.com> 1.2.19-1
+- enhanced build environment to support usermode and policykit switches, new
+  options for configure and spec file
+- make toplevel invisible to not show half initialized window while policykit
+  dialog is shown
+- system-config-firewall.desktop.in moved to config subdir
+- disable dbus usage if gui is used as root (needed for policykit v0)
+- do not report dbus error if there is no firewall configuration (empty or
+  missing /etc/sysconfig/system-config-firewall)
+- resize main window to comfortably fit in a 800x600 gnome desktop
+- moved all config files into config subdir: sysconfig, dekstop, pam and console
+- new infrastructure to enable policy translations
+- print exception if polkit authorization failes to console
+- show dbus error dialog if dbus conection can not be established
+- set title to APP_NAME for dialogs if there is no title
+- center dialogs on screen if there is no parent
+- make main app invisible at first to prevent to show an empty app while
+  PolicyKit password dialog is visible
+- updated translations: as, bn_IN, ca, da, de, ca, cs, es, fi, fr, gu, hi, it,
+                        ja, kn, ko, ml, mr, nl, or, pa, pl, pt, pt_BR, ru, sk,
+                        sr, sr@latin, sv, ta, te, uk, zh_TW
+
 * Fri Sep 11 2009 Thomas Woerner <twoerner@redhat.com> 1.2.18-1
 - added support for PolicyKit
 - removed unused inconsistent flag from CellRendererToggle in serviceView (rhbz#521144)
