@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.19
+Version: 1.2.20
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -29,10 +29,10 @@ BuildRequires: gettext
 BuildRequires: intltool
 Obsoletes: system-config-securitylevel
 Provides: system-config-securitylevel = 1.7.0
-Requires: pygtk2
-Requires: python
+Requires: system-config-firewall-base = %{version}-%{release}
 Requires: system-config-firewall-tui = %{version}-%{release}
 Requires: hicolor-icon-theme
+Requires: pygtk2
 Requires: pygtk2-libglade
 Requires: gtk2 >= 2.6
 %if %{with usermode}
@@ -48,29 +48,36 @@ Requires: python-slip-dbus >= 0.2.7
 %description
 system-config-firewall is a graphical user interface for basic firewall setup.
 
+%package base
+Summary: system-config-firewall base components and command line tool
+Group: System Environment/Base
+Obsoletes: lokkit
+Provides: lokkit = 1.7.0
+Requires: python
+Requires: iptables >= 1.2.8
+Requires: iptables-ipv6
+Requires: libselinux >= 1.19.1
+
+%description base
+Base components of system-config-firewall with lokkit, the command line tool 
+for basic firewall setup.
+
 %package tui
 Summary: A text interface for basic firewall setup
 Group: System Environment/Base
-Obsoletes: lokkit
 Obsoletes: system-config-securitylevel-tui
-Provides: lokkit = 1.7.0
 Provides: system-config-securitylevel-tui = 1.7.0
-Requires: iptables >= 1.2.8
-Requires: iptables-ipv6
+Requires: system-config-firewall-base = %{version}-%{release}
 Requires: system-config-network-tui
 Requires: newt
-Requires: libselinux >= 1.19.1
 
 %description tui
-system-config-firewall-tui is a text and commandline user
-interface for basic firewall setup.
+system-config-firewall-tui is a text user interface for basic firewall setup.
 
 %prep
 %setup -q
 
 %build
-echo %{with usermode} %{with polkit0} %{with polkit1}
-
 %configure %{?with_usermode: --enable-usermode} \
 	   %{?with_polkit0: --enable-policykit0} \
 	   %{!?with_polkit1: --disable-policykit1}
@@ -136,11 +143,10 @@ fi
 %config /etc/pam.d/system-config-firewall
 %endif
 
-%files -f %{name}.lang tui
+%files base -f %{name}.lang
 %defattr(-,root,root)
 %doc COPYING
 %{_sbindir}/lokkit
-%{_bindir}/system-config-firewall-tui
 %{_datadir}/system-config-firewall/convert-config
 %dir %{_datadir}/system-config-firewall
 %defattr(0644,root,root)
@@ -156,10 +162,18 @@ fi
 %{_datadir}/system-config-firewall/fw_services.*
 %{_datadir}/system-config-firewall/fw_sysconfig.*
 %{_datadir}/system-config-firewall/fw_sysctl.*
-%{_datadir}/system-config-firewall/fw_tui.*
 %ghost %config(missingok,noreplace) /etc/sysconfig/system-config-firewall
 
+%files tui
+%defattr(-,root,root)
+%{_bindir}/system-config-firewall-tui
+%{_datadir}/system-config-firewall/fw_tui.*
+
 %changelog
+* Tue Sep 29 2009 Thomas Woerner <twoerner@redhat.com> 1.2.20-1
+- new sub-package base containing the base components and the command line tool
+  (rhbz#525153)
+
 * Tue Sep 29 2009 Thomas Woerner <twoerner@redhat.com> 1.2.19-1
 - enhanced build environment to support usermode and policykit switches, new
   options for configure and spec file
