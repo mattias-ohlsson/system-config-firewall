@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.20
+Version: 1.2.21
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -170,6 +170,11 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Thu Oct  8 2009 Thomas Woerner <twoerner@redhat.com> 1.2.21-1
+- fixed Policykit v0 compatibility for Fedora version 10 and 11: python-slip
+  for PolicyKit v0 does not provide dbus
+- updated translations: bn_IN, uk, zh_CN
+
 * Tue Sep 29 2009 Thomas Woerner <twoerner@redhat.com> 1.2.20-1
 - new sub-package base containing the base components and the command line tool
   (rhbz#525153)
