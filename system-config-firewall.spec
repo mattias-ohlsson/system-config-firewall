@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.21
+Version: 1.2.23
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -23,7 +23,7 @@ ExclusiveOS: Linux
 Group: System Environment/Base
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
-Source0: %{name}-%{version}.tar.bz2
+Source0: https://fedorahosted.org/released/system-config-firewall/%{name}-%{version}.tar.bz2
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -35,6 +35,7 @@ Requires: hicolor-icon-theme
 Requires: pygtk2
 Requires: pygtk2-libglade
 Requires: gtk2 >= 2.6
+Requires: dbus-python
 %if %{with usermode}
 Requires: usermode-gtk >= 1.94
 %endif
@@ -56,7 +57,7 @@ Provides: lokkit = 1.7.0
 Requires: python
 Requires: iptables >= 1.2.8
 Requires: iptables-ipv6
-Requires: libselinux >= 1.19.1
+Requires: libselinux-utils >= 1.19.1
 
 %description base
 Base components of system-config-firewall with lokkit, the command line tool 
@@ -68,7 +69,7 @@ Group: System Environment/Base
 Obsoletes: system-config-securitylevel-tui
 Provides: system-config-securitylevel-tui = 1.7.0
 Requires: system-config-firewall-base = %{version}-%{release}
-Requires: system-config-network-tui
+#Requires: system-config-network-tui
 Requires: newt
 
 %description tui
@@ -131,6 +132,7 @@ fi
 %endif
 %{_datadir}/system-config-firewall/fw_gui.*
 %{_datadir}/system-config-firewall/fw_dbus.*
+%{_datadir}/system-config-firewall/fw_nm.*
 %{_datadir}/system-config-firewall/gtk_*
 %{_datadir}/system-config-firewall/*.glade
 %attr(0755,root,root) %{_datadir}/system-config-firewall/system-config-firewall-mechanism.*
@@ -170,6 +172,24 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Mon Jan 18 2010 Thomas Woerner <twoerner@redhat.com> 1.2.23-1
+- fixed build (fw_nm.py not packaged)
+- dropped dbus requirement for tui version
+
+* Fri Jan 15 2010 Thomas Woerner <twoerner@redhat.com> 1.2.22-1
+- using NetworkManager DBUS interface to replace NCDeviceList from
+  system-config-network
+- not opening orig port for local port forwarding, only new port is open
+- added isakmp support for IPsec (rhbz#504446)
+- added amanda client support (rhbz#541679)
+- fixed requirement for setenforce: libselinux-utils instead of libselinux
+- removed unused import socket
+- added download url to Source tag in spec file
+- fixed wrong license header in src/fw_tui.py (LGPL instead of GPL)
+- update cluster-suite service: disable rgmanager and cssd
+- removed separator at the end of the Options menu (rhbz#531635)
+- removed 2049/udp from NFS4 service (rhbz#532491)
+
 * Thu Oct  8 2009 Thomas Woerner <twoerner@redhat.com> 1.2.21-1
 - fixed Policykit v0 compatibility for Fedora version 10 and 11: python-slip
   for PolicyKit v0 does not provide dbus
