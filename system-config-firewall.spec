@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.23
+Version: 1.2.24
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -149,7 +149,7 @@ fi
 %defattr(-,root,root)
 %doc COPYING
 %{_sbindir}/lokkit
-%{_datadir}/system-config-firewall/convert-config
+%attr(0755,root,root) %{_datadir}/system-config-firewall/convert-config
 %dir %{_datadir}/system-config-firewall
 %defattr(0644,root,root)
 %{_datadir}/system-config-firewall/etc_services.*
@@ -172,6 +172,29 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Tue Mar 23 2010 Thomas Woerner <twoerner@redhat.com> 1.2.24-1
+- DBUS-mechanism: report errors to syslog and print traceback (rhbz#563354)
+- fixed minor misspellings (rhbz#566468)
+- msgmerged po files
+- added missing default values for ip*tables-config content (rhbz#566869)
+- autofoo utils update
+- fixed max length of user defined interface name in interfaceDialog
+- added missing range check to port_entry_changed_cb
+- fixed sensitiveness of protocol label in portDialog
+- fixed misuse of MARK extension in nat table, now in mangle table
+- port forwarding dialog usability fixes (rhbz#507638)
+- use new fw_functions.checkInterface function in tui and gui
+- new function to check interface names in fw_functions
+- use new checkInterface function in parser for trust, masq and forward-port
+- add wlan standard device
+- fixed build (fw_nm.py not packaged)
+- updated translations: bn_IN, cs, da, de, el, en_GB, es, fi, fr, hu, is, it,
+                        ja, nb, nl, or, pl, pt, pt_BR, ru, sr, sr@latin, sv,
+                        te, uk
+
+* Thu Feb 25 2010 Thomas Woerner <twoerner@redhat.com> 1.2.23-2
+- fixed missing execution bits for convert-config according to review
+
 * Mon Jan 18 2010 Thomas Woerner <twoerner@redhat.com> 1.2.23-1
 - fixed build (fw_nm.py not packaged)
 - dropped dbus requirement for tui version
