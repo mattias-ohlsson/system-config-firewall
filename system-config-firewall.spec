@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.24
+Version: 1.2.25
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -136,10 +136,8 @@ fi
 %{_datadir}/system-config-firewall/gtk_*
 %{_datadir}/system-config-firewall/*.glade
 %attr(0755,root,root) %{_datadir}/system-config-firewall/system-config-firewall-mechanism.*
-%{_datadir}/system-config-firewall/wizard_*.png
-%{_datadir}/system-config-firewall/wizard.svg
 %{_datadir}/applications/system-config-firewall.desktop
-%{_datadir}/icons/hicolor/*/apps/preferences-system-firewall.*
+%{_datadir}/icons/hicolor/*/apps/preferences-system-firewall*.*
 %if %{with usermode}
 %config /etc/security/console.apps/system-config-firewall
 %config /etc/pam.d/system-config-firewall
@@ -172,6 +170,15 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Mon Apr 26 2010 Thomas Woerner <twoerner@redhat.com> 1.2.25-1
+- fixed lokkit: do not create or alter firewall in selinux only mode
+  (rhbz#583986)
+- use new icons (rhbz#583715)
+- fixed treeviewtooltips to not show the tooltip if an overlapping window has
+  the focus
+- updated translations: bn_IN, de, es, gu, it, kn, ml, mr, nl, or, pa, pl, pt,
+                        pt_BR, ru, sk, sr, sr@latin, te
+
 * Tue Mar 23 2010 Thomas Woerner <twoerner@redhat.com> 1.2.24-1
 - DBUS-mechanism: report errors to syslog and print traceback (rhbz#563354)
 - fixed minor misspellings (rhbz#566468)
