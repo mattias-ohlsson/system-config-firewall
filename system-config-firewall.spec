@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.25
+Version: 1.2.27
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -170,6 +170,19 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Tue Aug 10 2010 Thomas Woerner <twoerner@redhat.com> 1.2.27-1
+- updated translations: bn_IN, de, fi, fr, gu, hi, it, ja, kn, ko, ml, mr, or,
+                        pt_BR, ru, ta, te, zh_CN, zh_TW
+
+* Tue Jun 29 2010 Thomas Woerner <twoerner@redhat.com> 1.2.26-1
+- added libvirt services (rhbz#565625)
+- added Bakula service (rhbz#588377)
+- fixed DBUS mechanism to report complete syslog message (rhbz#604623)
+- fixed crash because of missing /etc/services file (rhbz#604726)
+- updated translations: ar, as, bn_IN, da, de, es, fi, fr, gu, he, hi, is, it,
+                        ja, kn, ko, ml, mr, nl, or, pa, pl, pt, ru, ta, te, 
+                        zh_CN
+
 * Mon Apr 26 2010 Thomas Woerner <twoerner@redhat.com> 1.2.25-1
 - fixed lokkit: do not create or alter firewall in selinux only mode
   (rhbz#583986)
