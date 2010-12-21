@@ -15,7 +15,7 @@
 
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
-Version: 1.2.27
+Version: 1.2.28
 Release: 1%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
@@ -70,7 +70,7 @@ Obsoletes: system-config-securitylevel-tui
 Provides: system-config-securitylevel-tui = 1.7.0
 Requires: system-config-firewall-base = %{version}-%{release}
 #Requires: system-config-network-tui
-Requires: newt
+Requires: newt-python
 
 %description tui
 system-config-firewall-tui is a text user interface for basic firewall setup.
@@ -153,6 +153,7 @@ fi
 %{_datadir}/system-config-firewall/etc_services.*
 %{_datadir}/system-config-firewall/fw_compat.*
 %{_datadir}/system-config-firewall/fw_config.*
+%{_datadir}/system-config-firewall/fw_firewalld.*
 %{_datadir}/system-config-firewall/fw_functions.*
 %{_datadir}/system-config-firewall/fw_icmp.*
 %{_datadir}/system-config-firewall/fw_iptables.*
@@ -170,6 +171,16 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Tue Dec 21 2010 Thomas Woerner <twoerner@redhat.com> 1.2.28-1
+- added firewalld check to prevent usage of s-c-fw if firewalld is running
+- fixed gtk_label_autowrap not to change alignments
+- fixed port of libvirt-tls (rhbz#565625)
+- fixed requirement for newt-python (was newt before)
+- return -2 for ports > 65535 in fw_functions.getPortID for better port error
+  reporting
+- hide dialogs before going on (rhbz#643966)
+- updated translations: ca, de, he, hi, ja, nb, pa, pt, sk, sv, ta, uk, zh_TW
+
 * Tue Aug 10 2010 Thomas Woerner <twoerner@redhat.com> 1.2.27-1
 - updated translations: bn_IN, de, fi, fr, gu, hi, it, ja, kn, ko, ml, mr, or,
                         pt_BR, ru, ta, te, zh_CN, zh_TW
