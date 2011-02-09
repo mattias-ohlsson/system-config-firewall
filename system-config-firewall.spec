@@ -16,7 +16,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.29
-Release: 1%{?dist}
+Release: 2%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -171,6 +171,9 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.29-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Tue Jan  4 2011 Thomas Woerner <twoerner@redhat.com> 1.2.29-1
 - fixed firewalld check for lokkit (rhbz#667128)
 - translation updates: bn_IN, gu, ja, nl, pl, uk
