@@ -16,7 +16,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.29
-Release: 2%{?dist}
+Release: 3%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -98,16 +98,16 @@ desktop-file-install --vendor system --delete-original \
 rm -rf %{buildroot}
 
 %post
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x /usr/bin/gtk-update-icon-cache ]; then
-  gtk-update-icon-cache -q %{_datadir}/icons/hicolor
-fi
+touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 
 %postun
-touch --no-create %{_datadir}/icons/hicolor
-if [ -x /usr/bin/gtk-update-icon-cache ]; then
-  gtk-update-icon-cache -q %{_datadir}/icons/hicolor
+if [ $1 -eq 0 ] ; then
+    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 fi
+
+%posttrans
+gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %triggerpostun -- %{name} < 1.1.0
 %{_datadir}/system-config-firewall/convert-config
@@ -171,6 +171,9 @@ fi
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Sat May 07 2011 Christopher Aillon <caillon@redhat.com> - 1.2.29-3
+- Update icon cache scriptlet
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.29-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
