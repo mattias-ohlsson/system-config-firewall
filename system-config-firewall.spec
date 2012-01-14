@@ -16,7 +16,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.29
-Release: 4%{?dist}
+Release: 5%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -178,6 +178,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.29-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Fri Jul 22 2011 Thomas Woerner <twoerner@redhat.com> 1.2.29-4
 - fixed possible privilege escalation flaw via use of python pickle
   (CVE-2011-2520), replaced pickle by json (rhbz#717985) and (rhbz#722991)
