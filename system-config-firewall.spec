@@ -16,7 +16,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.29
-Release: 5%{?dist}
+Release: 6%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -26,6 +26,8 @@ BuildArch: noarch
 Source0: https://fedorahosted.org/released/system-config-firewall/%{name}-%{version}.tar.bz2
 # replace pickle by json (CVE-2011-2520):
 Patch0: system-config-firewall-1.2.27-rhbz#717985.patch
+# always allow ipv6-dhcp
+Patch1: system-config-firewall-1.2.29-ipv6-dhcp.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -80,6 +82,7 @@ system-config-firewall-tui is a text user interface for basic firewall setup.
 %prep
 %setup -q
 %patch0 -p1 -b .rhbz#717985
+%patch1 -p1 -b .ipv6-dhcp
 
 %build
 %configure %{?with_usermode: --enable-usermode} \
@@ -178,6 +181,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Fri Apr 20 2012 Thomas Woerner <twoerner@redhat.com> 1.2.29-6
+- Always allow ipv6-dhcp
+
 * Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.29-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
 

@@ -1,0 +1,12 @@
+diff -up system-config-firewall-1.2.29/src/fw_iptables.py.ipv6-dhcp system-config-firewall-1.2.29/src/fw_iptables.py
+--- system-config-firewall-1.2.29/src/fw_iptables.py.ipv6-dhcp	2012-04-20 18:44:49.788614086 +0200
++++ system-config-firewall-1.2.29/src/fw_iptables.py	2012-04-20 18:44:56.171630987 +0200
+@@ -368,6 +368,8 @@ class iptablesClass:
+         self._icmp(conf, fd, "INPUT", reject_type)
+         # trust lo
+         fd.write("-A INPUT -i lo -j ACCEPT\n")
++        # Always allow ipv6-dhcp
++        fd.write("-A INPUT -m state --state NEW -m udp -p udp --dport 546 -d fe80::/64 -j ACCEPT\n")
+         # trusted interfaces
+         if conf.trust:
+             for dev in conf.trust:
