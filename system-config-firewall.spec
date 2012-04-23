@@ -16,7 +16,7 @@
 Summary: A graphical interface for basic firewall setup
 Name: system-config-firewall
 Version: 1.2.29
-Release: 6%{?dist}
+Release: 7%{?dist}
 URL: http://fedorahosted.org/system-config-firewall
 License: GPLv2+
 ExclusiveOS: Linux
@@ -181,6 +181,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_datadir}/system-config-firewall/fw_tui.*
 
 %changelog
+* Mon Apr 23 2012 Thomas Woerner <twoerner@redhat.com> 1.2.29-7
+- only write ipv6-dhcp for ipv6 (rhbz#815555)
+ 
 * Fri Apr 20 2012 Thomas Woerner <twoerner@redhat.com> 1.2.29-6
 - Always allow ipv6-dhcp
 
