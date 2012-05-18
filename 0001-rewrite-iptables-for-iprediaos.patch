@@ -1,0 +1,35 @@
+From dd07c090c9ee23e4baba5c9b2a91bb0f419d2307 Mon Sep 17 00:00:00 2001
+From: Mattias Ohlsson <mattias.ohlsson@inprose.com>
+Date: Fri, 18 May 2012 14:26:18 +0200
+Subject: [PATCH] rewrite iptables for iprediaos
+
+---
+ src/fw_iptables.py |   12 +++++++++---
+ 1 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/fw_iptables.py b/src/fw_iptables.py
+index 49dcf88..6e93e96 100644
+--- a/src/fw_iptables.py
++++ b/src/fw_iptables.py
+@@ -356,9 +356,15 @@ class iptablesClass:
+         ### FILTER ###
+ 
+         fd.write("*filter\n")
+-        fd.write(":INPUT ACCEPT [0:0]\n")
+-        fd.write(":FORWARD ACCEPT [0:0]\n")
+-        fd.write(":OUTPUT ACCEPT [0:0]\n")
++        fd.write(":INPUT DROP [0:0]\n")
++        fd.write(":FORWARD DROP [0:0]\n")
++        fd.write(":OUTPUT DROP [0:0]\n")
++
++	# IprediaOS
++        fw.write("-A OUTPUT -o lo -j ACCEPT\n")
++        fw.write("-A OUTPUT -p tcp --dport 53 -j ACCEPT\n")
++        fw.write("-A OUTPUT -p udp --dport 53 -j ACCEPT\n")
++        fw.write("-A OUTPUT -m owner --uid-owner i2p -j ACCEPT\n")
+ 
+         # INPUT
+ 
+-- 
+1.7.7.6
+
