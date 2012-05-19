@@ -23,10 +23,10 @@ index 49dcf88..6e93e96 100644
 +        fd.write(":OUTPUT DROP [0:0]\n")
 +
 +	# IprediaOS
-+        fw.write("-A OUTPUT -o lo -j ACCEPT\n")
-+        fw.write("-A OUTPUT -p tcp --dport 53 -j ACCEPT\n")
-+        fw.write("-A OUTPUT -p udp --dport 53 -j ACCEPT\n")
-+        fw.write("-A OUTPUT -m owner --uid-owner i2p -j ACCEPT\n")
++        fd.write("-A OUTPUT -o lo -j ACCEPT\n")
++        fd.write("-A OUTPUT -p tcp --dport 53 -j ACCEPT\n")
++        fd.write("-A OUTPUT -p udp --dport 53 -j ACCEPT\n")
++        fd.write("-A OUTPUT -m owner --uid-owner i2p -j ACCEPT\n")
  
          # INPUT
  
