@@ -1,0 +1,126 @@
+diff --git a/src/fw_iptables.py b/src/fw_iptables.py
+index bd8e7ba..69628cc 100644
+--- a/src/fw_iptables.py
++++ b/src/fw_iptables.py
+@@ -354,113 +354,16 @@ class iptablesClass:
+         ### FILTER ###
+ 
+         fd.write("*filter\n")
+-        fd.write(":INPUT ACCEPT [0:0]\n")
+-        fd.write(":FORWARD ACCEPT [0:0]\n")
+-        fd.write(":OUTPUT ACCEPT [0:0]\n")
+-
+-        # INPUT
+-
+-        # accept established and related connections as early as possible
+-        #   RELATED is extremely important as it matches ICMP error messages
++        fd.write(":INPUT DROP [0:0]\n")
++        fd.write(":FORWARD DROP [0:0]\n")
++        fd.write(":OUTPUT DROP [0:0]\n")
+         fd.write("-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT\n")
+-
+-        # icmp
+-        self._icmp(conf, fd, "INPUT", reject_type)
+-        # trust lo
+         fd.write("-A INPUT -i lo -j ACCEPT\n")
+-        # Always allow ipv6-dhcp
+-        if self.type == "ipv6":
+-            fd.write("-A INPUT -m state --state NEW -m udp -p udp --dport 546 -d fe80::/64 -j ACCEPT\n")
+-        # trusted interfaces
+-        if conf.trust:
+-            for dev in conf.trust:
+-                fd.write("-A INPUT -i %s -j ACCEPT\n" % dev)
+-        # forward local
+-        if self.type == "ipv4" and conf.forward_port:
+-            for fwd in conf.forward_port:
+-                if fwd.has_key("toaddr"):
+-                    continue
+-                line = "-A INPUT -i %s -m state --state NEW -m %s -p %s" % \
+-                    (fwd["if"], fwd["proto"], fwd["proto"])
+-                if fwd.has_key("toport"):
+-                    line += " --dport %s" % self._portStr(fwd["toport"])
+-                line += " -m mark --mark 0x%x" % fwd["mark"]
+-                line += " -j ACCEPT\n"
+-                fd.write(line)
+-
+-        # open services
+-        if conf.services and len(conf.services) > 0:
+-            for service in conf.services:
+-                svc = fw_services.getByKey(service)
+-                for (port,proto) in svc.ports:
+-                    _state = ""
+-                    _dest = ""
+-                    _port = ""
+-                    if proto in [ "tcp", "udp" ]:
+-                        _state = "-m state --state NEW "
+-                        _proto = "-m %s -p %s " % (proto, proto)
+-                    else:
+-                        if self.type == "ipv4":
+-                            _proto = "-p %s " % proto
+-                        else:
+-                            _proto = "-m ipv6header --header %s " % proto
+-                    if port:
+-                        _port = "--dport %s " % port
+-                    if svc.destination.has_key(self.type):
+-                        _dest = "-d %s " % svc.destination[self.type]
+-                    fd.write("-A INPUT " + _state + _proto + _port + _dest + 
+-                             "-j ACCEPT\n")
+-
+-        # open ports
+-        if conf.ports and len(conf.ports) > 0:
+-            for (ports, proto) in conf.ports:
+-                fd.write("-A INPUT -m state --state NEW -m %s -p %s --dport %s "
+-                         "-j ACCEPT\n" % (proto, proto, self._portStr(ports)))
+-
+-        # FORWARD
+-        if (conf.trust and len(conf.trust) > 0) or \
+-                (self.type == "ipv4" and conf.masq and len(conf.masq) > 0) or \
+-                (self.type == "ipv4" and remote_forward):
+-            # accept established and related connections
+-            fd.write("-A FORWARD -m state --state ESTABLISHED,RELATED "
+-                     "-j ACCEPT\n")
+-            # icmp
+-            self._icmp(conf, fd, "FORWARD", reject_type)
+-            # trust lo
+-            fd.write("-A FORWARD -i lo -j ACCEPT\n")
+-            # trusted interfaces
+-            if conf.trust:
+-                for dev in conf.trust:
+-                    fd.write("-A FORWARD -i %s -j ACCEPT\n" % dev)
+-            # allow to output to masqueraded interfaces (IPv4 only)
+-            if self.type == "ipv4" and conf.masq:
+-                for dev in conf.masq:
+-                    fd.write("-A FORWARD -o %s -j ACCEPT\n" % dev)
+-            # forward remote
+-            if self.type == "ipv4" and conf.forward_port and remote_forward:
+-                for fwd in conf.forward_port:
+-                    if not fwd.has_key("toaddr"):
+-                        continue
+-                    if fwd.has_key("toport"):
+-                        port = self._portStr(fwd["toport"])
+-                    else:
+-                        port = self._portStr(fwd["port"])
+-                    fd.write("-A FORWARD -i %s -m state --state NEW "
+-                             "-m %s -p %s -d %s --dport %s "
+-                             "-j ACCEPT\n" % (fwd["if"], fwd["proto"],
+-                                              fwd["proto"], fwd["toaddr"],
+-                                              port))
+-        # add custom filter rules
+-        if len(custom_filter) > 0:
+-            for _filename in custom_filter:
+-                catFile(fd, _filename)
+-
+-        # reject remaining INPUT and OUTPUT
+-        fd.write("-A INPUT -j REJECT --reject-with %s\n" % reject_type)
+-        fd.write("-A FORWARD -j REJECT --reject-with %s\n" % reject_type)
+-
+-        # OUTPUT
+-        # no output rules, yet
++        fd.write("-A OUTPUT -o lo -j ACCEPT\n")
++        fd.write("-A OUTPUT -p udp --dport 123 -m owner --uid-owner root -j ACCEPT\n")
++        fd.write("-A OUTPUT -p tcp --dport 53 -m owner --uid-owner root -j ACCEPT\n")
++        fd.write("-A OUTPUT -p udp --dport 53 -m owner --uid-owner root -j ACCEPT\n")
++        fd.write("-A OUTPUT -m owner --uid-owner i2p -j ACCEPT\n")
+         fd.write("COMMIT\n")
+         fd.close()
+ 

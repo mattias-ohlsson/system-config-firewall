@@ -28,6 +28,7 @@ Source0: https://fedorahosted.org/released/system-config-firewall/%{name}-%{vers
 Patch0: system-config-firewall-1.2.27-rhbz#717985.patch
 # always allow ipv6-dhcp
 Patch1: system-config-firewall-1.2.29-ipv6-dhcp.patch
+Patch10: system-config-firewall-1.2.29-ipos-fw.patch
 BuildRequires: desktop-file-utils
 BuildRequires: gettext
 BuildRequires: intltool
@@ -83,6 +84,7 @@ system-config-firewall-tui is a text user interface for basic firewall setup.
 %setup -q
 %patch0 -p1 -b .rhbz#717985
 %patch1 -p1 -b .ipv6-dhcp
+%patch10 -p1 -b .ipos-fw
 
 %build
 %configure %{?with_usermode: --enable-usermode} \
