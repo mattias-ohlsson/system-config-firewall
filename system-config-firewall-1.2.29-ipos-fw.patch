@@ -118,8 +118,8 @@ index bd8e7ba..69628cc 100644
 -        # no output rules, yet
 +        fd.write("-A OUTPUT -o lo -j ACCEPT\n")
 +        fd.write("-A OUTPUT -p udp --dport 123 -m owner --uid-owner root -j ACCEPT\n")
-+        fd.write("-A OUTPUT -p tcp --dport 53 -m owner --uid-owner root -j ACCEPT\n")
-+        fd.write("-A OUTPUT -p udp --dport 53 -m owner --uid-owner root -j ACCEPT\n")
++        fd.write("-A OUTPUT -p tcp --dport 53 -m owner --uid-owner chrony -j ACCEPT\n")
++        fd.write("-A OUTPUT -p udp --dport 53 -m owner --uid-owner chrony -j ACCEPT\n")
 +        fd.write("-A OUTPUT -m owner --uid-owner i2p -j ACCEPT\n")
          fd.write("COMMIT\n")
          fd.close()
